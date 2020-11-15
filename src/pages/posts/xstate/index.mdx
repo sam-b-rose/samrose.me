@@ -1,0 +1,54 @@
+---
+title: Digging into XState
+slug: xstate
+isPublished: true
+publishedOn: 2020-11-15T22:29:55+0000
+abstract: In this post, we'll explore using XState for managing state in React.
+category: react
+interactive: false
+---
+
+Here is a code example taken from the Quick Start of the `@xstate/react` [docs](https://xstate.js.org/docs/packages/xstate-react/#quick-start).
+
+```jsx
+import { useMachine } from '@xstate/react';
+import { Machine } from 'xstate';
+
+const toggleMachine = Machine({
+  id: 'toggle',
+  initial: 'inactive',
+  states: {
+    inactive: {
+      on: { TOGGLE: 'active' },
+    },
+    active: {
+      on: { TOGGLE: 'inactive' },
+    },
+  },
+});
+
+export const Toggler = () => {
+  const [state, send] = useMachine(toggleMachine);
+
+  return (
+    <button onClick={() => send('TOGGLE')}>
+      {state.value === 'inactive'
+        ? 'Click to activate'
+        : 'Active! Click to deactivate'}
+    </button>
+  );
+};
+```
+
+## Visualize your state
+
+At [statecharts.github.io](https://statecharts.github.io) it is possible to visualize the state machine that you defined. For the tape player in the source code we get this:
+
+![And you thought a tape player is easy?](http://realfiction.net/assets/xstate_visual.png)
+
+And you thought a tape player is easy?
+Unfortunately you can't move the boxes. What you see is the states (the big boxes) and events (the small labels that start arrows) that define your state machine.
+
+The tape player is initially stopped. The PLAY event moves it to playing. Basically you can move from playing to forwarding and back to playing, but if you want to be rewinding, you need to be stopped first.
+
+You perform transitions by raising events. These events can be typed:

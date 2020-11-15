@@ -1,0 +1,17 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "path-intellisense.mappings": {
+    "@assets": "${workspaceFolder}/src/assets",
+    "@components": "${workspaceFolder}/src/components",
+    "@constants": "${workspaceFolder}/src/constants",
+    "@helpers": "${workspaceFolder}/src/helpers",
+    "@hooks": "${workspaceFolder}/src/hooks",
+    "@pages": "${workspaceFolder}/src/pages",
+    "@utils": "${workspaceFolder}/src/utils"
+  }
+}
