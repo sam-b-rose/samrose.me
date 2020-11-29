@@ -1,19 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 
 import { siteMetadata } from '../../gatsby-config';
-import { BREAKPOINTS } from '@constants';
 
 import FullWidth from '@components/FullWidth';
 import IndexPost from '@components/IndexPost';
+import Banner from '@components/Banner';
 import Hero from '@components/Hero';
 import Layout from '@components/Layout';
 import MainContent from '@components/MainContent';
 import MaxWidthWrapper from '@components/MaxWidthWrapper';
 import SectionTitle from '@components/SectionTitle';
 import Spacer from '@components/Spacer';
+import { BREAKPOINTS } from '@constants';
 
 type RecentPosts = {
   allMdx: {
@@ -51,21 +52,26 @@ const IndexPage = ({ data }: { data: RecentPosts }) => {
     <Layout>
       <Helmet title={siteMetadata.title} />
       <Hero />
-      <Intro>
-        <h1>Hi, I’m Sam</h1>
-        <p>a software engineer creating exceptional experiences for the web.</p>
-      </Intro>
       <FullWidth>
         <MainContent>
           <MaxWidthWrapper>
-            <SectionTitle>Recently Published</SectionTitle>
-            <Spacer size="2rem" />
-            {posts.map(({ id, ...props }) => (
-              <>
-                <IndexPost key={id} {...props} />
-                <Spacer size="5rem" />
-              </>
-            ))}
+            <Banner>
+              <h1>Hi, I’m Sam</h1>
+              <p>
+                a design-minded software engineer currently interested in React,
+                TypeScript, design systems, and state machines.
+              </p>
+            </Banner>
+            <RecentSection>
+              <SectionTitle>Recently Published</SectionTitle>
+              <Spacer size="2rem" />
+              {posts.map(({ id, ...props }) => (
+                <div key={id}>
+                  <IndexPost {...props} />
+                  <Spacer size="5rem" />
+                </div>
+              ))}
+            </RecentSection>
           </MaxWidthWrapper>
         </MainContent>
       </FullWidth>
@@ -73,31 +79,11 @@ const IndexPage = ({ data }: { data: RecentPosts }) => {
   );
 };
 
-const Intro = styled(MaxWidthWrapper)`
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  font-weight: 600;
-  font-family: 'IBM Plex Sans', san-serif;
-  color: var(--color-gray-800);
+const RecentSection = styled.section`
+  margin-top: 8rem;
 
-  & > h1 {
-    font-size: 2.5rem;
-
-    &::after {
-      content: '\\2009\\00AC';
-      display: inline-block;
-      color: var(--color-gray-300);
-    }
-  }
-
-  & > p {
-    font-size: 1.75rem;
-    color: var(--color-gray-700);
-
-    @media ${BREAKPOINTS.smMin} {
-      max-width: 75%;
-      margin-bottom: 8rem;
-    }
+  @media ${BREAKPOINTS.desktop} {
+    margin-top: 12rem;
   }
 `;
 

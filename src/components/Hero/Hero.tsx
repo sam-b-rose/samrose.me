@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { BREAKPOINTS } from '@constants';
-
 const Hero = () => (
   <HeroWrapper>
     <HeroSVG width="4195" height="1429" viewBox="0 0 4195 1429" fill="none">
@@ -24,9 +22,9 @@ const Hero = () => (
           width="4184"
           height="1313"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+          <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

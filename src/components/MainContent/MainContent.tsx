@@ -5,11 +5,11 @@ import { Z_INDICES, BREAKPOINTS } from '@constants';
 const MainContent = styled.main`
   position: relative;
   z-index: ${Z_INDICES.mainContent};
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 
   @media ${BREAKPOINTS.desktop} {
-    padding-top: 5rem;
+    padding-top: 3rem;
   }
 `;
 

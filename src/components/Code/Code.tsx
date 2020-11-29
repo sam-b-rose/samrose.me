@@ -3,11 +3,7 @@ import { LiveProvider, LiveEditor } from 'react-live';
 import { Language } from 'prism-react-renderer';
 import styled from 'styled-components';
 
-import { BREAKPOINTS } from '@constants';
 import { syntaxTheme } from '@helpers/syntax-highlighting.helpers';
-
-import FullWidth from '@components/FullWidth';
-import MaxWidthWrapper from '@components/MaxWidthWrapper';
 
 type CodeProps = {
   children: string;
@@ -42,28 +38,12 @@ const Code: React.FC<CodeProps> = ({
       language={language}
       theme={syntaxTheme}
     >
-      <FullWidth>
-        <Wrapper>
-          <EditorWrapper maxHeight={maxHeight}>
-            <LiveEditor />
-          </EditorWrapper>
-        </Wrapper>
-      </FullWidth>
+      <EditorWrapper maxHeight={maxHeight}>
+        <LiveEditor />
+      </EditorWrapper>
     </LiveProvider>
   );
 };
-
-const Wrapper = styled(MaxWidthWrapper)`
-  display: flex;
-  margin-top: 32px;
-  margin-bottom: 48px;
-
-  @media ${BREAKPOINTS.md} {
-    flex-direction: column;
-    padding-left: 0;
-    padding-right: 0;
-  }
-`;
 
 const EditorWrapper = styled.div<{ maxHeight?: number | string }>`
   flex: 1;

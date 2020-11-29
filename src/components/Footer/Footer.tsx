@@ -8,6 +8,7 @@ import { socialLinkedin } from 'react-icons-kit/ionicons/socialLinkedin';
 import ClickableIcon from '@components/ClickableIcon';
 import TextLink from '@components/TextLink';
 import MaxWidthWrapper from '@components/MaxWidthWrapper';
+import { BREAKPOINTS } from '@constants';
 
 const WIDTH = 24;
 
@@ -69,6 +70,10 @@ const FooterContent = styled(MaxWidthWrapper)`
   padding: 3rem 1rem;
   color: var(--color-gray-900);
   border-top: 1px solid var(--color-gray-100);
+
+  @media ${BREAKPOINTS.sm} {
+    flex-direction: column;
+  }
 `;
 
 const Copyright = styled.div`
@@ -83,15 +88,21 @@ const Icons = styled.div`
   color: var(--color-gray-400);
   font-size: 0.625rem;
   font-weight: bold;
-  text-align: right;
   text-transform: uppercase;
+  text-align: center;
+  margin-top: 1rem;
 
   & > p {
     margin-bottom: 0.5rem;
   }
 
-  & > * {
-    margin-left: 0.75rem;
+  @media ${BREAKPOINTS.desktop} {
+    margin-top: 0;
+
+    & > * {
+      margin-left: 0.75rem;
+      text-align: right;
+    }
   }
 `;
 

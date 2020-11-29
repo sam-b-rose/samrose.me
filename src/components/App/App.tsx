@@ -29,10 +29,12 @@ const GlobalStyles = createGlobalStyle`
     --syntax-regex: #969E92;
     --syntax-fn: #D7A1A5;
   }
-
+  
+  html,
   body {
-    color: var(--color-text);
     background: var(--color-background);
+    color: var(--color-text);
+    overflow-x: hidden;
   }
 
   a {
