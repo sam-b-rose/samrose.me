@@ -24,7 +24,6 @@ const Navigation = () => (
 const Wrapper = styled.nav`
   display: flex;
   flex: 1 1 auto;
-  justify-content: flex-end;
   padding: 0 1rem;
 `;
 

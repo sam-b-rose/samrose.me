@@ -35,9 +35,6 @@ const Wrapper = styled.span`
   display: block;
   margin: 40px auto 80px;
   padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-sizing: content-box;
-  border-radius: 5px;
 
   @media ${BREAKPOINTS.sm} {
     padding: 0;
@@ -54,7 +51,7 @@ const Caption = styled.span`
 
 const Img = styled.img`
   display: block;
-  width: 100%;
+  width: auto;
   border-radius: 3px;
   margin: auto; /* In case width is overridden, center it */
 `;

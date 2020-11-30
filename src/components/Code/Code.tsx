@@ -3,6 +3,7 @@ import { LiveProvider, LiveEditor } from 'react-live';
 import { Language } from 'prism-react-renderer';
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from '@constants';
 import { syntaxTheme } from '@helpers/syntax-highlighting.helpers';
 
 type CodeProps = {
@@ -56,8 +57,13 @@ const EditorWrapper = styled.div<{ maxHeight?: number | string }>`
       : typeof props.maxHeight === 'number'
       ? `${props.maxHeight}px`
       : props.maxHeight};
+  margin-bottom: 2rem;
   overflow: auto;
   font-size: 0.95em;
+
+  @media ${BREAKPOINTS.sm} {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 export default Code;

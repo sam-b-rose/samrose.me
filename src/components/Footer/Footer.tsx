@@ -6,7 +6,6 @@ import { socialGithub } from 'react-icons-kit/ionicons/socialGithub';
 import { socialLinkedin } from 'react-icons-kit/ionicons/socialLinkedin';
 
 import ClickableIcon from '@components/ClickableIcon';
-import TextLink from '@components/TextLink';
 import MaxWidthWrapper from '@components/MaxWidthWrapper';
 import { BREAKPOINTS } from '@constants';
 
@@ -16,12 +15,11 @@ const Footer = () => (
   <Wrapper>
     <FooterContent>
       <Copyright>
-        © 2020 – present Sam Rose
+        © 2020 Sam Rose
         <br />
-        All Rights Reserved. <TextLink href="/rss.xml">RSS feed</TextLink>.
+        All Rights Reserved.
       </Copyright>
       <Icons>
-        <p>Follow Me</p>
         <ClickableIcon
           size={WIDTH}
           href="https://codepen.io/samrose3"
@@ -92,15 +90,14 @@ const Icons = styled.div`
   text-align: center;
   margin-top: 1rem;
 
-  & > p {
-    margin-bottom: 0.5rem;
+  & > *:not(:first-of-type) {
+    margin-left: 0.75rem;
   }
 
   @media ${BREAKPOINTS.desktop} {
     margin-top: 0;
 
     & > * {
-      margin-left: 0.75rem;
       text-align: right;
     }
   }

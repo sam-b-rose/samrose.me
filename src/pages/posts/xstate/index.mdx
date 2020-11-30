@@ -1,54 +1,141 @@
 ---
-title: Digging into XState
-slug: xstate
+title: Minimal XState with Hooks
+slug: minimal-xstate-with-hooks
 isPublished: true
-publishedOn: 2020-11-15T22:29:55+0000
-abstract: Using XState for managing state in React
+publishedOn: 2020-11-30T01:26:58+0000
+abstract: Replacing the reducer with declarative state management
 category: react
 interactive: false
 ---
 
-Here is a code example taken from the Quick Start of the `@xstate/react` [docs](https://xstate.js.org/docs/packages/xstate-react/#quick-start).
+import visualizerToggleMachineSrc from './images/visualizer-toggle-machine.png';
+import Image from '@components/Image';
+
+Reducers are a common pattern for tracking state in a React component. Que simple toggle button example showcasing sed reducer pattern:
 
 ```jsx
-import { useMachine } from '@xstate/react';
-import { Machine } from 'xstate';
+import React, { useReducer } from 'react';
 
-const toggleMachine = Machine({
-  id: 'toggle',
-  initial: 'inactive',
-  states: {
-    inactive: {
-      on: { TOGGLE: 'active' },
-    },
-    active: {
-      on: { TOGGLE: 'inactive' },
-    },
-  },
-});
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'TOGGLE':
+      return state === 'active' ? 'inactive' : 'active';
+    default:
+      return state;
+  }
+};
 
-export const Toggler = () => {
-  const [state, send] = useMachine(toggleMachine);
+const Toggler = () => {
+  const [state, dispatch] = useReducer('inactive');
 
   return (
-    <button onClick={() => send('TOGGLE')}>
-      {state.value === 'inactive'
-        ? 'Click to activate'
-        : 'Active! Click to deactivate'}
+    <button onClick={() => dispatch('TOGGLE')}>
+      {state === 'inactive' ? 'Activate' : 'Deactivate'}
     </button>
   );
 };
 ```
 
-## Visualize your state
+This is a simple reducer. However, if you aren't familar with the reducer pattern, this may look very intemedating and unclear how the state is updated. Using a state machine is an alternative way to convert this swtich statement into a more declarative configuration describing the component state transitions.
 
-At [statecharts.github.io](https://statecharts.github.io) it is possible to visualize the state machine that you defined. For the tape player in the source code we get this:
+## Starting small and simple
 
-![And you thought a tape player is easy?](http://realfiction.net/assets/xstate_visual.png)
+The React package from XState uses the full XState library. If your application state needs are simple, the `@xstate/fsm` might be a sufficient start. This package is XState's minimal solution for creating finite state machines – a 1kb implementation of XState.
 
-And you thought a tape player is easy?
-Unfortunately you can't move the boxes. What you see is the states (the big boxes) and events (the small labels that start arrows) that define your state machine.
+Instead of including all of XState and the React package, lets wrap `@xstate/fsm` with our own `useMachine` hook.
 
-The tape player is initially stopped. The PLAY event moves it to playing. Basically you can move from playing to forwarding and back to playing, but if you want to be rewinding, you need to be stopped first.
+```js
+import { useState, useMemo, useEffect } from ‘react’;
+import { interpret } from ‘@xstate/fsm’;
 
-You perform transitions by raising events. These events can be typed:
+export function useMachine(machine) {
+  // Keep track of the current machine state
+  const [current, setCurrent] = useState(machine.initialState);
+  // Start the service (only once!)
+  const service = useMemo(
+    () =>
+      interpret(machine)
+        .onTransition(state => {
+          // Update the current machine state when a transition occurs
+          if (state.changed) {
+            setCurrent(state);
+          }
+        })
+        .start(),
+    []
+  );
+  // Stop the service when the component unmounts
+  useEffect(() => {
+    return () => service.stop();
+  }, []);
+  return [current, service.send];
+}
+```
+
+## Replacing with our minimal machine hook
+
+Now that we have our custom `useMachine` hook, let's put it into use!
+
+```
+import React from 'react';
+import { createMachine } from '@xstate/fsm';
+import { useMachine } from '../hooks/useMachine';
+
+const toggleMachine = createMachine({
+  id: 'toggle',
+  initial: 'inactive',
+  states: {
+    inactive: { on: { TOGGLE: 'active' } },
+    active: { on: { TOGGLE: 'inactive' } }
+  }
+});
+
+const Toggler = () => {
+  const [state, send] = useMachine(toggleMachine);
+
+  return (
+    <button onClick={() => send('TOGGLE')}>
+      {state === 'inactive' ? 'Activate' : 'Deactivate'}
+    </button>
+  );
+};
+```
+
+## Visualizing our state machine
+
+XState also has a visualized that allows you to load and preview your state machine configuration. The visualizer can create a [sharable link](https://xstate.js.org/viz/?gist=8920aced5b898be4f270e82171434d96) of our toggle machine.
+
+<Image src={visualizerToggleMachineSrc} alt="Our toggle machine visulaized" />
+
+Instead of using a framework specific API such as `useReducer`, our state logic is completely portable and can be used independent of React in any framework.
+
+## Upgrade ready
+
+Say we have decided it makes sense for our project to use the full XState library. We can simply replace `@xstate/fsm` with `xstate`. Similarly, we can use the fully supported `@xstate/react` package instead of our custom `useMachine` hook.
+
+```
+import React from 'react';
+import { Machine } from 'xstate';
+import { useMachine } from '@xstate/react';
+
+const toggleMachine = Machine({
+  id: 'toggle',
+  initial: 'inactive',
+  states: {
+    inactive: { on: { TOGGLE: 'active' } },
+    active: { on: { TOGGLE: 'inactive' } }
+  }
+});
+
+const Toggler = () => {
+  const [state, send] = useMachine(toggleMachine);
+
+  return (
+    <button onClick={() => send('TOGGLE')}>
+      {state === 'inactive' ? 'Activate' : 'Deactivate'}
+    </button>
+  );
+};
+```
+
+Thats it! Now we have all the more advanced capabilities of XState without having to make a single change to our state logic.
