@@ -50,6 +50,22 @@ const GlobalStyles = createGlobalStyle`
   button:focus:not(:focus-visible) {
     outline: none;
   }
+
+  .mermaid {
+    border-radius: 0.5rem;
+    background-color: var(--syntax-bg);
+    padding: 1rem;
+    margin: 2rem 0;
+
+    * {
+      line-height: 1.25;
+    }
+
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
+  }
 `;
 
 const App: React.FC = ({ children }) => {

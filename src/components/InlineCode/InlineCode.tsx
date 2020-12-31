@@ -8,4 +8,5 @@ export default styled.span`
   padding: 0 6px;
   background: var(--color-gray-100);
   border-radius: 0.25rem;
+  white-space: nowrap;
 `;

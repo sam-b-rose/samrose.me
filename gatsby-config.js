@@ -33,6 +33,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -40,6 +41,31 @@ module.exports = {
           posts: require.resolve('./src/components/BlogPost/BlogPost.tsx'),
           default: require.resolve('./src/components/MDXPage/MDXPage.tsx'),
         },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-mermaid',
+            options: {
+              theme: 'base',
+              mermaidOptions: {
+                themeVariables: {
+                  background: '#0E0E1A',
+                  primaryColor: '#151628',
+                  primaryBorderColor: 'hsl(210deg, 25%, 88%)',
+                  primaryTextColor: '#C6797E',
+                },
+              },
+            },
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 590,
+              disableBgImageOnAlpha: true,
+              linkImagesToOriginal: false,
+              withWebp: true,
+            },
+          },
+        ],
       },
     },
     {

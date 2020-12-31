@@ -27,7 +27,6 @@ const MDXProvider: React.FC = ({ children }) => {
         blockquote: Quote,
         ul: List,
         li: ListItem,
-        img: Image,
         em: Em,
         code: Code,
         inlineCode: InlineCode,

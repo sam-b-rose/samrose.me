@@ -1,0 +1,144 @@
+---
+title: Theme-based styling with sx
+slug: theme-based-styling-with-sx
+isPublished: true
+publishedOn: 2020-12-30T11:30:55+0000
+abstract: Enhance your component flexibility while sticking to your design principles.
+category: react
+interactive: false
+---
+
+As React components become the building blocks of our application, styling them becomes a crucial part of our development. Scaling these styles as our codebase grows is critical – balancing modularity, performance, and developer experience.
+
+Today, there are many ways to apply styles to your React, just to name a few popular methods:
+
+- [Inline Styles](https://reactjs.org/docs/dom-elements.html#style)
+- [CSS Classes](https://reactjs.org/docs/faq-styling.html#how-do-i-add-css-classes-to-components)
+- [CSS Modules](https://github.com/css-modules/css-modules)
+- [CSS-in-JS](https://github.com/tuchk4/awesome-css-in-js)
+- [Stylable](https://stylable.io)
+
+Let's a closer look at a fascinating CSS-in-JS approach adopted by [Theme UI] which provides amazing developer ergonomics while respecting design constraints.
+
+## The sx prop
+
+Theme UI introduces a powerful styling feature, the [sx prop]. This prop lets you style elements inline using values from your [theme](https://theme-ui.com/theming). You can add the `sx` prop to your JSX elements by simply adding the custom `/** @jsx jsx */` pragma comment to the top of your file and importing the `jsx` function from `theme-ui`.
+
+```jsx
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
+
+export default (props) => (
+  <div
+    {...props}
+    sx={{
+      // values referencing scales defined in a theme
+      color: 'primary',
+      bg: 'background',
+      fontFamily: 'body',
+      // raw CSS value
+      boxShadow: '0 0 1px 3px rgba(0, 0, 0, .125)',
+    }}
+  />
+);
+```
+
+This is a similar method to the [Emotion] `css` prop, but now we have the nifty features of Theme UI:
+
+- [Theme-Aware Properties]()
+- [Responsive Values]()
+- [Functional Values]()
+
+## First-class component support
+
+Instead of lugging all of Theme UI into our project, we can leverage the smaller `@theme-ui/css` package to incorporate `sx` prop powers into individual components. Theme UI used this package to add `sx` support to its foundational Box component.
+
+```jsx
+/**
+ * Simplified modification of the Theme UI Box
+ * http://bit.ly/3pzPiAr
+ */
+
+import styled from '@emotion/styled';
+import { css } from '@theme-ui/css';
+
+const sx = (props) => css(props.sx)(props.theme);
+
+const Box = styled.div(
+  {
+    boxSizing: 'border-box',
+    margin: 0,
+    minWidth: 0,
+  },
+  sx,
+  (props) => props.css
+);
+
+export default Box;
+```
+
+Now, the `Box` component has the `sx` prop integrated in and can be used without the need for the JSX pragma.
+
+```jsx
+/** No need to import the theme-ui jsx pragma */
+import Box from './components/Box'
+
+export const Card = ({ sx, ...props }) => (
+  <Box
+    {...props}
+    sx={{
+      border: '1px solid',
+      borderColor: 'border',
+      borderRadius: "grayLight"
+      p: 3,
+      ...sx
+    }}
+  />
+)
+
+export default Card;
+```
+
+Moving the `sx` function to its own utility file, this helper can be used to add the `sx` prop as a first-class feature for any component.
+
+```jsx
+import styled from '@emotion/styled';
+import sx from '../utils/sx';
+
+const Button = styled.button(
+  {
+    appearance: 'none',
+    display: 'inline-block',
+    textAlign: 'center',
+    lineHeight: 'inherit',
+    textDecoration: 'none',
+    fontSize: 'inherit',
+    px: 3,
+    py: 2,
+    color: 'white',
+    bg: 'primary',
+    border: 0,
+    borderRadius: 4,
+  },
+  sx
+);
+
+export default Button;
+```
+
+## Wrapping up
+
+<!-- ## Next steps -->
+
+This is a simple approach to adding a powerful styling layer to your React components, allowing for flexibility let promoting designing within the theme constraints. I recommend checking out the [Theme UI] source code on how this technique is taken one step farther in adding theme-base [variants](https://github.com/system-ui/theme-ui/blob/stable/packages/components/src/Box.js#L13), [base styles](https://github.com/system-ui/theme-ui/blob/stable/packages/components/src/Box.js#L12), and hooking in [additional](https://github.com/system-ui/theme-ui/blob/stable/packages/components/src/Box.js#L4) prop conveniences from [Styled System].
+
+<!-- You can expand on this technique by using your foundational `Box` component as the basis for all your UI pieces. More on that in part 2, [Building from the Box]. -->
+
+[theme ui]: https://theme-ui.com
+[emotion]: https://emotion.sh/
+[sx prop]: https://theme-ui.com/sx-prop
+[theme-aware properties]: https://theme-ui.com/sx-prop#theme-aware-properties
+[responsive values]: https://theme-ui.com/sx-prop#responsive-values
+[functional values]: https://theme-ui.com/sx-prop#functional-values
+[styled system]: https://github.com/styled-system/styled-system
+[building from the box]: /posts/building-from-the-box
