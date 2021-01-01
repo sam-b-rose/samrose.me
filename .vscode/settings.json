@@ -13,8 +13,5 @@
     "@hooks": "${workspaceFolder}/src/hooks",
     "@pages": "${workspaceFolder}/src/pages",
     "@utils": "${workspaceFolder}/src/utils"
-  },
-  "cSpell.enableFiletypes": [
-    "mdx"
-  ]
+  }
 }

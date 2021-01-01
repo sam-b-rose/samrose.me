@@ -41,7 +41,6 @@ module.exports = {
               } else {
                 const disclaimer = `${abstract}<div style="margin-top: 50px; font-style: italic;"><strong><a href="${postUrl}">View the original post</a>.</strong></div><br /><br />`;
 
-                // Hacky workaround for https://github.com/gaearon/overreacted.io/issues/65
                 html = edge.node.html
                   .replace(/href="\//g, `href="${siteUrl}/`)
                   .replace(/src="\//g, `src="${siteUrl}/`)
@@ -87,6 +86,8 @@ module.exports = {
         `,
         output: '/rss.xml',
         title: "Sam Rose's blog",
+        description:
+          'Thoughts about code, design, startups and other interesting things.',
       },
     ],
   },
