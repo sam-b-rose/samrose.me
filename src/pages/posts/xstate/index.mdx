@@ -8,11 +8,18 @@ category: react
 interactive: false
 ---
 
+import BlogCard from '@components/BlogCard';
+
 Over the last couple of years, we've started pushing our application state management to the browser. Managing state can be a large part of what makes our job as UI developers challenging. We've made great strides with patterns such as [Redux] and the [useReducer] hook in React.
 
 I like Redux and `useReducer` and have found them a very effective method for handling state management. However, there are many benefits to using [finite state machines] and [statecharts] as a UI state management solution. The main advantage - you can _declaratively_ define the UI logic behind each state and restrict your states (no unknown or unintended states).
 
-> **Note:** This is not intended to be an introduction to reducers or state machines, rather a light comparison between the two used in the context of React. If you are new to either concept, here are a few resources to dive into first:
+<BlogCard>
+  <strong>Note:</strong> This is not intended to be an introduction to reducers
+  or state machines, rather a light comparison between the two used in the
+  context of React. If you are new to either concept, here are a few resources
+  to dive into first
+</BlogCard>
 
 - React [useReducer] hook
 - Xstate [concepts]

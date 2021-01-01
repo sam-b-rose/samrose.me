@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { siteMetadata } from '../../../gatsby-config';
 
+import Card from '@components/Card';
 import FullWidth from '@components/FullWidth';
 import IndexPost from '@components/IndexPost';
 import Layout from '@components/Layout';
@@ -76,12 +77,6 @@ const PreviewGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   gap: 2rem;
   margin: 1rem 0 3rem;
-`;
-
-const Card = styled.div`
-  background: var(--color-subtle);
-  border-radius: 0.5rem;
-  padding: 2rem;
 `;
 
 const sortDatesDescending = (a: Post, b: Post) => {
