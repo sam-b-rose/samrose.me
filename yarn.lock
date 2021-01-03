@@ -6799,6 +6799,11 @@ gatsby-link@^2.6.1:
     "@types/reach__router" "^1.3.6"
     prop-types "^15.7.2"
 
+gatsby-omni-font-loader@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/gatsby-omni-font-loader/-/gatsby-omni-font-loader-1.1.3.tgz#48d1500715f7e511ea4619ffbf734606050a075c"
+  integrity sha512-fI9me5GyurM+uF5zmiBQ8oFAbq5L+jH8JekWQGcHSvHf1qq3BbdApSHqNirpfomZ3C++PHLsnaQpcLoB9EXTBw==
+
 gatsby-page-utils@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-page-utils/-/gatsby-page-utils-0.4.0.tgz#1a0364a8c26dc4585ac9999dab4e4458a4cf0466"

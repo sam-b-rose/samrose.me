@@ -50,7 +50,7 @@ const MDXPage: React.FC<MDXPageProps> = ({
         <FullWidth>
           <Helmet title={`${pageTitle}${siteMetadata.title}`} />
           <MainContent>
-            <MaxWidthWrapper>{children}</MaxWidthWrapper>
+            <MaxWidthWrapper as="article">{children}</MaxWidthWrapper>
           </MainContent>
         </FullWidth>
       </Layout>

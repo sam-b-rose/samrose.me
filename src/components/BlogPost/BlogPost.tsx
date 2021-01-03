@@ -77,7 +77,7 @@ const PostSection = styled.div`
   margin: 2rem 0;
 `;
 
-const InlineLinks = styled.div`
+const InlineLinks = styled.footer`
   display: grid;
   grid-gap: 0.5rem;
   grid-template-columns: repeat(3, auto);

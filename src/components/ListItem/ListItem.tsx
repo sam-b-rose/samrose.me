@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import IconBase from 'react-icons-kit';
 import { arrowRightC } from 'react-icons-kit/ionicons/arrowRightC';
-import { starFullOutline } from 'react-icons-kit/typicons/starFullOutline';
-import { starOutline } from 'react-icons-kit/typicons/starOutline';
 
 const DefaultIcon = () => (
   <IconBase
@@ -12,25 +10,9 @@ const DefaultIcon = () => (
     style={{ color: 'var(--color-primary)' }}
   />
 );
-const FullStarIcon = () => (
-  <IconBase
-    size={16}
-    icon={starFullOutline}
-    style={{ color: 'var(--color-primary)' }}
-  />
-);
-const EmptyStarIcon = () => (
-  <IconBase
-    size={16}
-    icon={starOutline}
-    style={{ color: 'var(--color-primary)' }}
-  />
-);
 
 const ICONS = {
   default: DefaultIcon,
-  fullStar: FullStarIcon,
-  emptyStar: EmptyStarIcon,
 };
 
 type ListItemProps = {
@@ -59,7 +41,6 @@ const Wrapper = styled.li`
 
 const IconWrapper = styled.div`
   padding-right: 16px;
-  padding-top: 2px;
 `;
 
 const Children = styled.div``;

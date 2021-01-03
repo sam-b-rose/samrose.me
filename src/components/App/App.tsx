@@ -10,8 +10,8 @@ const GlobalStyles = createGlobalStyle`
     --font-weight-bold: 700;
     --font-weight-medium: 500;
     --font-weight-light: 400;
-    --font-family: "Inter", Futura, -apple-system, sans-serif;
-    --font-family-mono: "MonoLisa", "Fira Mono",monospace;
+    --font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-mono: "MonoLisa", "Fira Mono", monospace;
 
     --syntax-bg: #151628;
     --syntax-highlight: #330033;

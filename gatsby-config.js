@@ -83,15 +83,23 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: 'gatsby-omni-font-loader',
       options: {
-        google: {
-          families: ['IBM Plex Sans:600', 'Inter:400,500', 'Fugaz One'],
-        },
-        custom: {
-          families: ['MonoLisa'],
-          urls: ['/fonts.css'],
-        },
+        enableListener: false,
+        preconnect: ['https://fonts.gstatic.com'],
+        custom: [
+          {
+            name: ['MonoLisa'],
+            file: '/fonts.css',
+          },
+        ],
+        web: [
+          {
+            name: ['IBM Plex Sans', 'Inter', 'Fugaz One'],
+            file:
+              'https://fonts.googleapis.com/css2?family=Fugaz+One&family=IBM+Plex+Sans:wght@600&family=Inter:wght@400;500&display=swap',
+          },
+        ],
       },
     },
     {

@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 import { BREAKPOINTS } from '@constants';
 
-const Banner = styled.div`
+const Banner = styled.header`
   max-width: 80%;
   margin-bottom: 8rem;
   color: var(--color-gray-800);
   font-weight: 600;
-  font-family: 'IBM Plex Sans', san-serif;
+  font-family: 'IBM Plex Sans', var(--font-family);
 
   & > time {
     color: var(--color-secondary);

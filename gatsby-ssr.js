@@ -7,8 +7,6 @@ import {
   INITIAL_COLOR_MODE_CSS_PROP,
 } from '@constants';
 
-import App from '@components/App';
-
 // Dark Mode strategy credit to Josh Comeau
 // https://www.joshwcomeau.com/react/dark-mode/
 
@@ -87,8 +85,4 @@ const FallbackStyles = () => {
 export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
   setHeadComponents(<FallbackStyles key="fallback-styles" />);
   setPreBodyComponents(<MagicScriptTag key="magic-script-tag" />);
-};
-
-export const wrapPageElement = ({ element }) => {
-  return <App>{element}</App>;
 };

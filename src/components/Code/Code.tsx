@@ -21,9 +21,6 @@ const Code: React.FC<CodeProps> = ({
   const language = className.replace(/language-/, '') as Language;
 
   React.useEffect(() => {
-    // HACK - There's an issue with React-Live and SSR.
-    // To avoid dealing with this issue for now, I'm just not rendering things
-    // on the initial pass.
     setHasBeenMounted(true);
   }, []);
 
@@ -40,7 +37,7 @@ const Code: React.FC<CodeProps> = ({
       theme={syntaxTheme}
     >
       <EditorWrapper maxHeight={maxHeight}>
-        <LiveEditor />
+        <LiveEditor style={{ whiteSpace: 'pre' }} />
       </EditorWrapper>
     </LiveProvider>
   );
@@ -60,6 +57,14 @@ const EditorWrapper = styled.div<{ maxHeight?: number | string }>`
   margin-bottom: 2rem;
   overflow: auto;
   font-size: 0.95em;
+
+  textarea {
+    z-index: -1;
+  }
+
+  & pre {
+    overflow-x: auto;
+  }
 
   @media ${BREAKPOINTS.sm} {
     margin-bottom: 1.5rem;
