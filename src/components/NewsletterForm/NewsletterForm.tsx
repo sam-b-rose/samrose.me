@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import IconBase from 'react-icons-kit';
 import { send } from 'react-icons-kit/feather/send';
 
+import { BREAKPOINTS } from '@constants';
+
 import Button from '@components/Button';
 import TextInput from '@components/TextInput';
 
@@ -47,8 +49,12 @@ const Wrapper = styled.div`
 const InlineForm = styled.div`
   display: grid;
   grid-gap: 0.75rem;
-  grid-template-columns: repeat(2, auto);
-  justify-content: start;
+  grid-template-columns: auto;
+
+  @media ${BREAKPOINTS.smMin} {
+    grid-template-columns: repeat(2, auto);
+    justify-content: start;
+  }
 `;
 
 export default NewsletterForm;
