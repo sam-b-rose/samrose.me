@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Banner from '@components/Banner';
@@ -26,12 +26,21 @@ type BlogPostProps = {
 
 const BlogPost: React.FC<BlogPostProps> = ({ children, ...props }) => {
   const { slug } = props.pageContext.frontmatter;
-  const encodedUrl = window.encodeURIComponent(
-    `https://samrose.me/posts/${slug}`
-  );
+  const [links, setLinks] = useState({
+    twitter: '',
+    github: '',
+  });
 
-  const twitterUrl = `https://mobile.twitter.com/search?q=${encodedUrl}`;
-  const githubUrl = `https://github.com/samrose3/samrose.me/edit/main/src/pages/posts/${slug}/index.mdx`;
+  useEffect(() => {
+    const encodedUrl = window.encodeURIComponent(
+      `https://samrose.me/posts/${slug}`
+    );
+
+    setLinks({
+      twitter: `https://mobile.twitter.com/search?q=${encodedUrl}`,
+      github: `https://github.com/samrose3/samrose.me/edit/main/src/pages/posts/${slug}/index.mdx`,
+    });
+  }, [slug]);
 
   return (
     <MDXPage {...props}>
@@ -45,9 +54,9 @@ const BlogPost: React.FC<BlogPostProps> = ({ children, ...props }) => {
       {children}
 
       <InlineLinks>
-        <TextLink href={twitterUrl}>Discuss on Twitter</TextLink>
+        <TextLink href={links.twitter}>Discuss on Twitter</TextLink>
         <div>•</div>
-        <TextLink href={githubUrl}>Edit post on GitHub</TextLink>
+        <TextLink href={links.github}>Edit post on GitHub</TextLink>
       </InlineLinks>
 
       <PostSection>
