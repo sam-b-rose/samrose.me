@@ -9,6 +9,10 @@ const TextInput = styled.input`
   padding: 0.5rem 1rem;
   color: var(--color-text);
   font-size: 0.875rem;
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px var(--color-gray-300);
+  }
 `;
 
 export default TextInput;

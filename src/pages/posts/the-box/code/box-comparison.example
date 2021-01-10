@@ -1,0 +1,18 @@
+/** @jsx React.createElement */
+// Reset pragma to React.createElement
+// Needed after the above example ☝️
+
+// Same result but using our Box component
+const BoxExample = () => (
+  <Box
+    sx= {{
+      backgroundColor: 'hotpink',
+      '&:hover': {
+        color: 'lightgreen'
+      }
+    }}>
+    This has a hotpink background.
+  </Box>
+);
+
+render(<BoxExample />);

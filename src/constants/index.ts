@@ -96,6 +96,10 @@ export const COLORS = {
     light: '#f5f7ff',
     dark: '#151628',
   },
+  shadow: {
+    light: 'rgba(0, 0, 0, 0.1)',
+    dark: 'rgba(0, 0, 0, 0.4)',
+  },
   'logo-light': {
     light: '#87729d',
     dark: '#D7A1A5',

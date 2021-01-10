@@ -1,0 +1,211 @@
+---
+title: Building from the Box
+slug: the-box
+isPublished: true
+publishedOn: 2021-01-10T01:32:33+0000
+abstract: Use the versatile Box as your component foundation.
+category: react
+interactive: false
+---
+
+import { jsx, ThemeProvider } from 'theme-ui';
+import BlogCard from '@components/BlogCard';
+import InlineCode from '@components/InlineCode';
+import LiveEditableCode from '@components/LiveEditableCode';
+import TextLink from '@components/TextLink';
+import { theme, Box, Label, Text, TextInput } from '@components/Box';
+
+import cssPropComparisonExample from './code/css-prop-comparison.example';
+import boxComparisonExample from './code/box-comparison.example';
+import applicationExample from './code/application.example';
+
+This a follow up post exploring how the power of the `sx` prop can be used by a single component, the Box, to build up a system of common UI elements.
+
+If you aren't familiar with the `sx` prop, I recommend checking out this tidbit in my [previous post] or from the [Theme UI] documentation.
+
+## The humble Box
+
+The Box component is used primarily as a layout primitive to add margin, padding, and colors to content.
+
+In the last post, we implemented a minimal Box component that has the powers of the `sx` prop baked-in (i.e. without the need for the [JSX pragma]).
+
+```jsx
+/**
+ * Simplified modification of the Theme UI Box
+ * http://bit.ly/3pzPiAr
+ */
+
+import styled from '@emotion/styled';
+import { css } from '@theme-ui/css';
+
+// Parse the style objects passed via `sx` to the `css(...)` function
+const sx = (props) => css(props.sx)(props.theme);
+// Similar to `sx`, but used for "internal" base component styles
+const base = (props) => css(props.__css)(props.theme);
+
+// 👆 This makes adding `sx` style overrides easier
+// for complex selectors like focus, hover, etc.
+
+const Box = styled.div(
+  {
+    boxSizing: 'border-box',
+    margin: 0,
+    minWidth: 0,
+  },
+  base,
+  sx,
+  (props) => props.css
+);
+
+export default Box;
+```
+
+In this version, our Box will also have a private `__css` prop which will be used to apply base styles for our component, freeing up the `sx` prop to be used for override styles.
+
+The base styles passed via the `__css` prop are parsed just like the `sx` prop. However, by splitting the base styles and `sx` styles (which we can think of as inline style overrides) into two props, we let Emotion handle the complex merging of [object styles]. This will hopefully make more sense after seeing how `__css` is used in a bit!
+
+## A quick comparison
+
+We can use both the `sx` and `__css` props similar to how the `css` prop is used in [Emotion]. Here is an example taken from the Emotion docs using the `css` prop.
+
+<LiveEditableCode code={cssPropComparisonExample} scope={{ jsx }} />
+
+The same result can be created using the Box component, but without the need to import our JSX pragma and with the [enhanced features](/posts/sx-prop/#the-sx-prop) of the `sx` prop.
+
+<LiveEditableCode code={boxComparisonExample} scope={{ Box }} />
+
+## Creating new components
+
+By integrating the power of the `sx` prop into our Box, we can use this as a base component for building other foundational components. Let's create a few more commonly needed UI pieces.
+
+```jsx
+export const Label = React.forwardRef((props, ref) => (
+  <Box
+    ref={ref}
+    as="label"
+    __css={{
+      fontSize: 2,
+      fontWeight: 'heading',
+    }}
+    {...props}
+  />
+));
+
+export const Text = React.forwardRef((props, ref) => (
+  <Box
+    ref={ref}
+    __css={{
+      fontSize: 1,
+      fontWeight: 'body',
+    }}
+    {...props}
+  />
+));
+
+export const TextInput = React.forwardRef((props, ref) => (
+  <Box
+    ref={ref}
+    as="input"
+    type="text"
+    __css={{
+      bg: 'background',
+      border: '1px solid',
+      borderColor: 'border',
+      borderRadius: 'md',
+      color: 'text',
+      px: 3,
+      py: 2,
+      fontSize: 1,
+      '&:focus': {
+        boxShadow: ({ colors }) => `0 0 0 2px ${colors.outline}`,
+      },
+    }}
+    {...props}
+  />
+));
+```
+
+We are use `React.forwardRef` to automatically pass a `ref` through to our root Box component. This allows users of these foundational components to obtain a `ref` to the inner DOM element if needed.
+
+If you are curious, check out the React documentation for more on [forwarding refs].
+
+Lastly, we will need some theme values to define our design constraints. Here is a simple, sample theme object based on the Theme UI [Base Preset].
+
+```js
+// modified example base theme from @theme-ui/presets
+
+export const theme = {
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
+  fontWeights: {
+    body: 400,
+    heading: 600,
+    bold: 700,
+  },
+  colors: {
+    text: 'var(--color-text)',
+    background: 'var(--color-background)',
+    primary: 'var(--color-primary)',
+    secondary: 'var(--color-secondary)',
+    muted: 'var(--color-gray-600)',
+    border: 'var(--color-gray-400)',
+    outline: 'var(--color-gray-300)',
+  },
+  radii: {
+    none: '0',
+    sm: '0.125rem',
+    md: '0.375rem',
+    lg: '0.5rem',
+    full: '9999px',
+  },
+};
+```
+
+Just a quick note on the color values used. I'm reusing some already defined [CSS custom properties] that are being used for this site, e.g. `var(--color-text)`. This just makes the next example look nice for both light and dark themes.
+
+Theme UI does have a [color modes] feature which you can also leverage if your application needs to support multiple modes.
+
+## Putting them to use
+
+The above Box-based components all have the `sx` prop baked-in. When necessary, we can sprinkle in any style customizations leveraging the design constraints from our theme.
+
+Now that we have some bits of UI, let's compose a name input for our application.
+
+<LiveEditableCode
+  code={applicationExample}
+  scope={{ ThemeProvider, theme, Box, Label, Text, TextInput }}
+/>
+
+## Wrapping up
+
+In summary, the Box is a versatile foundation component that can be using as a building-block to create other components. Adding the flexible styling feature of the `sx` prop to the Box shares this capability to all other components created from Box. This creates a simple, consistent styling pattern across components that leverages the theme to promote styling with defined design constraints.
+
+<BlogCard>
+  <strong>Note:</strong> This technique is mostly experimental and an
+  exploration of the component styling pattern used by Theme UI. Applying this
+  pattern at scale for a large component library would need some added
+  refinement and probably best to do in TypeScript{' '}
+  <span role="img" aria-label="heart">
+    💙
+  </span>
+</BlogCard>
+
+If this was interesting, I encourage you to check out the Theme UI [source code] for a more detailed look:
+
+- [Theme UI Box]
+- [@theme-ui/components]
+- [@theme-ui/css]
+
+[previous post]: /posts/sx-prop
+[theme ui]: https://theme-ui.com/sx-prop/
+[emotion]: https://emotion.sh/docs/css-prop
+[jsx pragma]: https://theme-ui.com/guides/jsx-pragma
+[object styles]: https://theme-ui.com/guides/object-styles
+[forwarding refs]: https://reactjs.org/docs/forwarding-refs.html
+[base preset]: https://github.com/system-ui/theme-ui/tree/develop/packages/preset-base/src/index.ts
+[css custom properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+[color modes]: https://theme-ui.com/theming#color-modes
+[source code]: https://github.com/system-ui/theme-ui
+[theme ui box]: https://github.com/system-ui/theme-ui/blob/develop/packages/components/src/Box.js
+[@theme-ui/components]: https://github.com/system-ui/theme-ui/blob/develop/packages/components/README.md
+[@theme-ui/css]: https://github.com/system-ui/theme-ui/blob/develop/packages/css/src/index.ts#L298
