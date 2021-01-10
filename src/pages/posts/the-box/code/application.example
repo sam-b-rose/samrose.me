@@ -1,0 +1,27 @@
+const NameInput = () => (
+  <ThemeProvider theme={theme}>
+    <Label htmlFor="name">
+      Name
+    </Label>
+
+    <Text
+      as="p"
+      id="name-helper"
+      sx={{
+        // Theme-based overrides
+        mb: 2,
+        color: "muted"
+      }}>
+      First and last names
+    </Text>
+    
+    <TextInput
+      id="name"
+      name="name"
+      aria-describedby="name-helper"
+      placeholder="e.g. Jane Doe"
+    />
+  </ThemeProvider>
+);
+
+render(<NameInput />);

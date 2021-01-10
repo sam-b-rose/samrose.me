@@ -1,0 +1,18 @@
+/** @jsx jsx */
+// import { jsx } from '@emotion/react'
+
+// Using the `css` prop from Emotion
+const CssPropExample = () => (
+  <div
+    css={{
+      backgroundColor: 'hotpink',
+      '&:hover': {
+        color: 'lightgreen'
+      }
+    }}
+  >
+    This has a hotpink background.
+  </div>
+);
+
+render(<CssPropExample />);

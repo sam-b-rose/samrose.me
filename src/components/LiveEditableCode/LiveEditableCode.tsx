@@ -6,7 +6,6 @@ import { BREAKPOINTS } from '@constants';
 import { interactWithCodeSample } from '@helpers/analytics.helpers';
 import { syntaxTheme } from '@helpers/syntax-highlighting.helpers';
 
-import FullWidth from '@components/FullWidth';
 import MaxWidthWrapper from '@components/MaxWidthWrapper';
 
 type LiveEditableCodeProps = {
@@ -64,22 +63,20 @@ const LiveEditableCode: React.FC<LiveEditableCodeProps> = ({
       noInline={!inline}
       theme={syntaxTheme}
     >
-      <FullWidth>
-        <Wrapper>
-          <EditorWrapper
-            split={leftSplit}
-            maxHeight={maxHeight}
-            onClick={trackChange}
-          >
-            <LiveEditor />
-          </EditorWrapper>
+      <Wrapper>
+        <EditorWrapper
+          split={leftSplit}
+          maxHeight={maxHeight}
+          onClick={trackChange}
+        >
+          <LiveEditor />
+        </EditorWrapper>
 
-          <PreviewWrapper split={rightSplit}>
-            <LiveError />
-            <LivePreview />
-          </PreviewWrapper>
-        </Wrapper>
-      </FullWidth>
+        <PreviewWrapper split={rightSplit}>
+          <LiveError />
+          <LivePreview />
+        </PreviewWrapper>
+      </Wrapper>
     </LiveProvider>
   );
 };
@@ -88,12 +85,12 @@ const Wrapper = styled(MaxWidthWrapper)`
   display: flex;
   overflow: hidden;
   border-radius: 0.75rem;
-  border: 2px solid var(--syntax-bg);
+  box-shadow: 0 3px 8px 0 var(--color-shadow);
   margin-top: 2rem;
   margin-bottom: 72px;
   padding: 0;
   &:focus-within {
-    border-color: var(--color-gray-200);
+    box-shadow: 0 0 0 2px var(--color-gray-300), 0 3px 8px 0 var(--color-shadow);
   }
   @media ${BREAKPOINTS.md} {
     flex-direction: column;
@@ -124,13 +121,6 @@ const EditorWrapper = styled.div<{ split: number; maxHeight?: number }>`
 const PreviewWrapper = styled.div<{ split: number }>`
   padding: 16px;
   flex: ${(props) => props.split};
-  background: var(--color-background);
-  @media ${BREAKPOINTS.md} {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  @media ${BREAKPOINTS.mdMin} {
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-  }
 `;
 
 export default LiveEditableCode;

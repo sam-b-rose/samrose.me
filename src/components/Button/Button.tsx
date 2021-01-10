@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   display: inline-block;
-  box-shadow: 0 0 0 0 var(--color-gray-200);
+  box-shadow: 0 0 0 0 var(--color-shadow);
   border-radius: 0.375rem;
   border: 1px solid var(--color-gray-200);
   background-color: var(--color-background);
@@ -16,7 +16,7 @@ const Button = styled.button`
 
   &:hover,
   &:focus {
-    box-shadow: 0 1px 8px 0 var(--color-gray-200);
+    box-shadow: 0 1px 8px 0 var(--color-shadow);
   }
 `;
 
