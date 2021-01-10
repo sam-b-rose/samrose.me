@@ -58,7 +58,7 @@ const PostsPage = ({ data }: { data: AllPosts }) => {
                 <h1>{capitalize(category)}</h1>
                 <PreviewGrid>
                   {posts[category].map(({ id, ...props }) => (
-                    <Card>
+                    <Card key={id}>
                       <IndexPost {...props} />
                     </Card>
                   ))}
