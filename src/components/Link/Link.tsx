@@ -14,7 +14,6 @@ const Link: React.FC<LinkProps> = ({ href, target, rel, ...delegated }) => {
   const external = href.match(/(^http|^mailto)/i);
 
   // By default, external links should open in a new tab.
-  // This is overrideable though.
   if (typeof target === 'undefined') {
     target = external ? '_blank' : '_self';
   }

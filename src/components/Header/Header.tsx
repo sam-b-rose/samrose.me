@@ -2,16 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { socialRss } from 'react-icons-kit/ionicons/socialRss';
 
-import DarkToggle from '@components/DarkToggle';
-import MaxWidthWrapper from '@components/MaxWidthWrapper';
-import Logo from '@components/Logo';
-import Navigation from '@components/Navigation';
 import ClickableIcon from '@components/ClickableIcon';
+import DarkToggle from '@components/DarkToggle';
+import Logo from '@components/Logo';
+import MaxWidthWrapper from '@components/MaxWidthWrapper';
+import Navigation from '@components/Navigation';
+import SkipLink from '@components/SkipLink';
 
 const Header = () => {
   return (
     <Wrapper>
       <HeaderContent>
+        <SkipLink />
         <Logo />
         <Navigation />
         <IconGroup>

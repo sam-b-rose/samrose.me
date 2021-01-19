@@ -5,6 +5,7 @@ import { BREAKPOINTS } from '@constants';
 
 const Banner = styled.header`
   max-width: 80%;
+  margin-top: 3rem;
   margin-bottom: 8rem;
   color: var(--color-gray-800);
   font-weight: 600;

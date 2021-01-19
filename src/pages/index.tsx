@@ -53,15 +53,15 @@ const IndexPage = ({ data }: { data: RecentPosts }) => {
       <Helmet title={siteMetadata.title} />
       <Hero />
       <FullWidth>
-        <MainContent>
-          <MaxWidthWrapper>
-            <Banner>
-              <h1>Hi, I’m Sam</h1>
-              <p>
-                a design-minded software engineer currently interested in React,
-                TypeScript, design systems, and state machines.
-              </p>
-            </Banner>
+        <MaxWidthWrapper>
+          <Banner>
+            <h1>Hi, I’m Sam</h1>
+            <p>
+              a design-minded software engineer currently interested in React,
+              TypeScript, design systems, and state machines.
+            </p>
+          </Banner>
+          <MainContent>
             <RecentSection>
               <SectionTitle>Recently Published</SectionTitle>
               <Spacer size="2rem" />
@@ -72,15 +72,16 @@ const IndexPage = ({ data }: { data: RecentPosts }) => {
                 </div>
               ))}
             </RecentSection>
-          </MaxWidthWrapper>
-        </MainContent>
+          </MainContent>
+        </MaxWidthWrapper>
       </FullWidth>
     </Layout>
   );
 };
 
 const RecentSection = styled.section`
-  margin-top: 8rem;
+  margin-top: 10rem;
+  margin-bottom: 3rem;
 
   @media ${BREAKPOINTS.desktop} {
     margin-top: 12rem;

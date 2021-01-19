@@ -31,7 +31,9 @@ const IndexPost: React.FC<IndexPostProps> = ({
     </PostLink>
     <Date>{humanizeDate(publishedOn)} </Date>
     <Excerpt>{excerpt}</Excerpt>
-    <TextLink href={path}>Read more</TextLink>
+    <TextLink tabIndex={-1} href={path}>
+      Read more
+    </TextLink>
   </>
 );
 
@@ -44,7 +46,7 @@ const PostLink = styled(Link)`
   }
 `;
 
-const PostTitle = styled.h4`
+const PostTitle = styled.h2`
   font-size: 1.375rem;
   font-weight: 600;
   letter-spacing: -1px;

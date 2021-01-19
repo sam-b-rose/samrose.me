@@ -54,16 +54,16 @@ const PostsPage = ({ data }: { data: AllPosts }) => {
         <MainContent>
           <MaxWidthWrapper>
             {Object.keys(posts).map((category) => (
-              <>
+              <Section>
                 <h1>{capitalize(category)}</h1>
                 <PreviewGrid>
                   {posts[category].map(({ id, ...props }) => (
-                    <Card key={id}>
+                    <Card as="article" key={id}>
                       <IndexPost {...props} />
                     </Card>
                   ))}
                 </PreviewGrid>
-              </>
+              </Section>
             ))}
           </MaxWidthWrapper>
         </MainContent>
@@ -72,11 +72,23 @@ const PostsPage = ({ data }: { data: AllPosts }) => {
   );
 };
 
+const Section = styled.section`
+  margin: 3rem 0;
+
+  & > h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  &:last-of-type {
+    margin-bottom: 6rem;
+  }
+`;
+
 const PreviewGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   gap: 2rem;
-  margin: 1rem 0 3rem;
 `;
 
 const sortDatesDescending = (a: Post, b: Post) => {
