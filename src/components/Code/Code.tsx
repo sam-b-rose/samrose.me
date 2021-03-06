@@ -12,11 +12,7 @@ type CodeProps = {
   maxHeight?: number | string;
 };
 
-const Code: React.FC<CodeProps> = ({
-  children,
-  maxHeight,
-  className = 'language-jsx',
-}) => {
+const Code: React.FC<CodeProps> = ({ children, maxHeight, className = '' }) => {
   const [hasBeenMounted, setHasBeenMounted] = React.useState(false);
   const language = className.replace(/language-/, '') as Language;
 
@@ -36,7 +32,7 @@ const Code: React.FC<CodeProps> = ({
       language={language}
       theme={syntaxTheme}
     >
-      <EditorWrapper maxHeight={maxHeight}>
+      <EditorWrapper maxHeight={maxHeight} data-language={language}>
         <LiveEditor style={{ whiteSpace: 'pre' }} />
       </EditorWrapper>
     </LiveProvider>
@@ -44,6 +40,7 @@ const Code: React.FC<CodeProps> = ({
 };
 
 const EditorWrapper = styled.div<{ maxHeight?: number | string }>`
+  position: relative;
   flex: 1;
   padding: 1em;
   background: var(--syntax-bg);
@@ -57,6 +54,17 @@ const EditorWrapper = styled.div<{ maxHeight?: number | string }>`
   margin-bottom: 2rem;
   overflow: auto;
   font-size: 0.95em;
+
+  &::after {
+    content: attr(data-language);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 0.75rem;
+    color: var(--syntax-fg);
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
 
   textarea {
     z-index: -1;

@@ -68,6 +68,7 @@ const LiveEditableCode: React.FC<LiveEditableCodeProps> = ({
           split={leftSplit}
           maxHeight={maxHeight}
           onClick={trackChange}
+          data-language="jsx"
         >
           <LiveEditor />
         </EditorWrapper>
@@ -102,10 +103,12 @@ const Wrapper = styled(MaxWidthWrapper)`
 `;
 
 const EditorWrapper = styled.div<{ split: number; maxHeight?: number }>`
+  position: relative;
   flex: ${(props) => props.split};
   background: var(--syntax-bg);
   max-height: ${(props) => props.maxHeight}px;
   overflow: auto;
+
   /*
     The code should not be editable on smaller screens.
     It's too janky of an experience.
@@ -115,6 +118,16 @@ const EditorWrapper = styled.div<{ split: number; maxHeight?: number }>`
     textarea {
       pointer-events: none;
     }
+  }
+  &::after {
+    content: attr(data-language);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 0.75rem;
+    color: var(--syntax-fg);
+    font-size: 0.75rem;
+    font-weight: bold;
   }
 `;
 

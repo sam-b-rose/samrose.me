@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
     --font-family-mono: "MonoLisa", "Fira Mono", monospace;
 
     --syntax-bg: #151628;
+    --syntax-fg: #a2a3aa;
     --syntax-highlight: #330033;
     --syntax-txt: #C6797E;
     --syntax-comment: #5D636E;
