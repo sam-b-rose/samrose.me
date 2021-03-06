@@ -2,7 +2,7 @@ import { PrismTheme } from 'prism-react-renderer';
 
 export const syntaxTheme: PrismTheme = {
   plain: {
-    color: 'var(--syntax-txt)',
+    color: 'var(--syntax-fg)',
     backgroundColor: 'var(--syntax-bg)',
     fontFamily: 'var(--font-family-mono)',
   },
