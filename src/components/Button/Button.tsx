@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   display: inline-block;
-  box-shadow: 0 0 0 0 var(--color-shadow);
+  box-shadow: 0 0 0 0 var(--colors-shadow);
   border-radius: 0.375rem;
-  border: 1px solid var(--color-gray-200);
-  background-color: var(--color-background);
+  border: 1px solid var(--colors-gray200);
+  background-color: var(--colors-background);
   margin: 0;
   padding: 0.5rem 1rem;
-  color: var(--color-text);
+  color: var(--colors-text);
   font-size: 0.875rem;
   text-decoration: none;
   cursor: pointer;
@@ -16,7 +16,7 @@ const Button = styled.button`
 
   &:hover,
   &:focus {
-    box-shadow: 0 1px 8px 0 var(--color-shadow);
+    box-shadow: 0 1px 8px 0 var(--colors-shadow);
   }
 `;
 

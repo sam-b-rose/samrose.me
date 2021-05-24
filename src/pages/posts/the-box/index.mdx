@@ -143,13 +143,13 @@ export const theme = {
     bold: 700,
   },
   colors: {
-    text: 'var(--color-text)',
-    background: 'var(--color-background)',
-    primary: 'var(--color-primary)',
-    secondary: 'var(--color-secondary)',
-    muted: 'var(--color-gray-600)',
-    border: 'var(--color-gray-400)',
-    outline: 'var(--color-gray-300)',
+    text: 'var(--colors-text)',
+    background: 'var(--colors-background)',
+    primary: 'var(--colors-primary)',
+    secondary: 'var(--colors-secondary)',
+    muted: 'var(--colors-gray600)',
+    border: 'var(--colors-gray400)',
+    outline: 'var(--colors-gray300)',
   },
   radii: {
     none: '0',
@@ -161,7 +161,7 @@ export const theme = {
 };
 ```
 
-Just a quick note on the color values used. I'm reusing some already defined [CSS custom properties] that are being used for this site, e.g. `var(--color-text)`. This just makes the next example look nice for both light and dark themes.
+Just a quick note on the color values used. I'm reusing some already defined [CSS custom properties] that are being used for this site, e.g. `var(--colors-text)`. This just makes the next example look nice for both light and dark themes.
 
 Theme UI does have a [color modes] feature which you can also leverage if your application needs to support multiple modes.
 

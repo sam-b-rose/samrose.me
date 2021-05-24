@@ -9,7 +9,7 @@ export default styled.button`
   cursor: pointer;
   text-align: left;
   &:focus {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid var(--colors-primary);
     outline-offset: 2px;
   }
 `;

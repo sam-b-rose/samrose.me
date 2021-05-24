@@ -35,7 +35,7 @@ const DarkToggle = () => {
         <circle
           cx="9"
           cy="9"
-          fill="var(--color-text)"
+          fill="var(--colors-text)"
           mask="url(#moon-mask-main-nav)"
           r="8"
         ></circle>
@@ -44,42 +44,42 @@ const DarkToggle = () => {
             cx="17"
             cy="9"
             r="1.5"
-            fill="var(--color-text)"
+            fill="var(--colors-text)"
             style={{ transformOrigin: 'center center', transform: 'scale(0)' }}
           ></circle>
           <circle
             cx="13"
             cy="15.928203230275509"
             r="1.5"
-            fill="var(--color-text)"
+            fill="var(--colors-text)"
             style={{ transformOrigin: 'center center', transform: 'scale(0)' }}
           ></circle>
           <circle
             cx="5.000000000000002"
             cy="15.92820323027551"
             r="1.5"
-            fill="var(--color-text)"
+            fill="var(--colors-text)"
             style={{ transformOrigin: 'center center', transform: 'scale(0)' }}
           ></circle>
           <circle
             cx="1"
             cy="9.000000000000002"
             r="1.5"
-            fill="var(--color-text)"
+            fill="var(--colors-text)"
             style={{ transformOrigin: 'center center', transform: 'scale(0)' }}
           ></circle>
           <circle
             cx="4.9999999999999964"
             cy="2.071796769724492"
             r="1.5"
-            fill="var(--color-text)"
+            fill="var(--colors-text)"
             style={{ transformOrigin: 'center center', transform: 'scale(0)' }}
           ></circle>
           <circle
             cx="13"
             cy="2.0717967697244912"
             r="1.5"
-            fill="var(--color-text)"
+            fill="var(--colors-text)"
             style={{ transformOrigin: 'center center', transform: 'scale(0)' }}
           ></circle>
         </g>

@@ -7,12 +7,12 @@ const Banner = styled.header`
   max-width: 80%;
   margin-top: 3rem;
   margin-bottom: 8rem;
-  color: var(--color-gray-800);
+  color: var(--colors-gray900);
   font-weight: 600;
-  font-family: 'IBM Plex Sans', var(--font-family);
+  font-family: 'IBM Plex Sans', var(--fonts-inter);
 
   & > time {
-    color: var(--color-secondary);
+    color: var(--colors-secondary);
     font-size: 0.875rem;
     font-weight: var(--font-weight-medium);
     text-transform: uppercase;
@@ -25,12 +25,12 @@ const Banner = styled.header`
     &::after {
       content: '\\2009\\00AC';
       display: inline-block;
-      color: var(--color-gray-300);
+      color: var(--colors-gray300);
     }
   }
 
   & > p {
-    color: var(--color-gray-700);
+    color: var(--colors-gray700);
     font-size: 1.75rem;
   }
 

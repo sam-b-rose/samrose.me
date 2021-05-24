@@ -7,7 +7,7 @@ const DefaultIcon = () => (
   <IconBase
     size={16}
     icon={arrowRightC}
-    style={{ color: 'var(--color-primary)' }}
+    style={{ color: 'var(--colors-primary)' }}
   />
 );
 

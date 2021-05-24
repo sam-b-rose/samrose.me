@@ -1,19 +1,11 @@
 import React from 'react';
 import Terser from 'terser';
 
-import {
-  COLOR_MODE_KEY,
-  COLORS,
-  INITIAL_COLOR_MODE_CSS_PROP,
-} from '@constants';
-
-// Dark Mode strategy credit to Josh Comeau
-// https://www.joshwcomeau.com/react/dark-mode/
+import { COLOR_MODE_KEY } from '@constants';
+import { darkTheme, getCssString } from './src/stitches.config';
 
 function setColorsByTheme() {
-  const colors = '🌈';
   const colorModeKey = '🔑';
-  const colorModeCssProp = '⚡️';
 
   const mql = window.matchMedia('(prefers-color-scheme: dark)');
   const prefersDarkFromMQ = mql.matches;
@@ -30,56 +22,32 @@ function setColorsByTheme() {
   }
 
   let root = document.documentElement;
-
-  root.style.setProperty(colorModeCssProp, colorMode);
-
-  // set --color-*
-  Object.entries(colors).forEach(([name, colorByTheme]) => {
-    const cssVarName = `--color-${name}`;
-
-    root.style.setProperty(cssVarName, colorByTheme[colorMode]);
-  });
+  if (colorMode === 'dark') {
+    root.classList.add('dark');
+  }
 }
 
 const MagicScriptTag = () => {
-  const boundFn = String(setColorsByTheme)
-    .replace("'🌈'", JSON.stringify(COLORS))
-    .replace('🔑', COLOR_MODE_KEY)
-    .replace('⚡️', INITIAL_COLOR_MODE_CSS_PROP);
+  const boundFn = String(setColorsByTheme).replace('🔑', COLOR_MODE_KEY);
 
   let calledFunction = `(${boundFn})()`;
-
   calledFunction = Terser.minify(calledFunction).code;
 
-  // eslint-disable-next-line react/no-danger
   return <script dangerouslySetInnerHTML={{ __html: calledFunction }} />;
 };
 
-/**
- * If the user has JS disabled, the injected script will never fire!
- * This means that they won't have any colors set, everything will be default
- * black and white.
- * We can solve for this by injecting a `<style>` tag into the head of the
- * document, which sets default values for all of our colors.
- * Only light mode will be available for users with JS disabled.
- */
 const FallbackStyles = () => {
-  // Create a string holding each CSS variable:
-  /*
-    `--color-text: black;
-    --color-background: white;`
-  */
+  // call darkTheme to import theme vars
+  darkTheme.className;
 
-  const colorsCssVariableString = Object.entries(COLORS).reduce(
-    (acc, [name, colorByTheme]) => {
-      return `${acc}\n--color-${name}: ${colorByTheme.light};`;
-    },
-    ''
+  return (
+    <style
+      id="stitches"
+      dangerouslySetInnerHTML={{
+        __html: getCssString(),
+      }}
+    />
   );
-
-  const wrappedInSelector = `html { ${colorsCssVariableString}}`;
-
-  return <style>{wrappedInSelector}</style>;
 };
 
 export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {

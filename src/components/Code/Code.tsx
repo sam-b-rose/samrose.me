@@ -43,7 +43,7 @@ const EditorWrapper = styled.div<{ maxHeight?: number | string }>`
   position: relative;
   flex: 1;
   padding: 1em;
-  background: var(--syntax-bg);
+  background: var(--colors-syntaxBg);
   border-radius: 0.75rem;
   max-height: ${(props) =>
     typeof props.maxHeight === 'undefined'
@@ -61,7 +61,7 @@ const EditorWrapper = styled.div<{ maxHeight?: number | string }>`
     top: 0;
     right: 0;
     padding: 0.5rem 0.75rem;
-    color: var(--syntax-fg);
+    color: var(--colors-syntaxFg);
     font-size: 0.75rem;
     font-weight: bold;
   }

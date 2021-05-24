@@ -4,7 +4,7 @@ import Link from '@components/Link';
 
 const TextLink = styled(Link)`
   position: relative;
-  color: var(--color-primary);
+  color: var(--colors-primary);
   font-weight: 500;
   text-decoration: none;
   transition: color 0.15s ease-in-out;
@@ -19,13 +19,13 @@ const TextLink = styled(Link)`
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--color-primary);
+    background-color: var(--colors-primary);
     transform: translateY(-150%);
     transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
   }
 
   &:hover {
-    color: var(--color-primary);
+    color: var(--colors-primary);
 
     &::after {
       opacity: 1;

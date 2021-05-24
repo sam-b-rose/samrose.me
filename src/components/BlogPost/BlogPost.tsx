@@ -82,7 +82,7 @@ const InlineLinks = styled.footer`
   grid-gap: 0.5rem;
   grid-template-columns: repeat(3, auto);
   justify-content: start;
-  border-bottom: 1px solid var(--color-gray-100);
+  border-bottom: 1px solid var(--colors-gray100);
   padding: 2rem 0;
 `;
 

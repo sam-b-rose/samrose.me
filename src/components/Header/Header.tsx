@@ -23,8 +23,8 @@ const Header = () => {
             href="/rss.xml"
             icon={socialRss}
             iconHover={socialRss}
-            color={'var(--color-text)'}
-            colorHover={'var(--color-text)'}
+            color={'var(--colors-text)'}
+            colorHover={'var(--colors-text)'}
           />
         </IconGroup>
       </HeaderContent>

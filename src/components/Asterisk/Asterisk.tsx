@@ -41,7 +41,7 @@ const AsteriskGlyph = styled.span`
   position: relative;
   font-size: 21px;
   font-weight: 500;
-  color: var(--color-primary);
+  color: var(--colors-primary);
 `;
 
 const TouchArea = styled(UnstyledButton)`

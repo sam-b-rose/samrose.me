@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import TextLink from '@components/TextLink';
 
 const items = [
-  // { text: 'Work', to: '/work' },
   { text: 'Posts', to: '/posts' },
   { text: 'About', to: '/about' },
   { text: 'Portfolio', to: 'https://portfolio.samrose.me' },
@@ -38,7 +37,7 @@ const NavigationItem = styled.li`
 `;
 
 const NavigationLink = styled(TextLink)`
-  color: var(--color-text);
+  color: var(--colors-text);
 `;
 
 export default Navigation;
