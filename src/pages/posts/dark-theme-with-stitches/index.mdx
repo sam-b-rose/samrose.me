@@ -1,0 +1,161 @@
+---
+title: Dark theme with Stitches
+slug: dark-theme-with-stitches
+isPublished: true
+publishedOn: 2021-06-06T17:29:55+0000
+abstract: Integrate dark theme support with Stitches on Gatsby.
+category: react
+interactive: false
+---
+
+After tinkering a bit with [Stitches], I am very excited to see the improvements in DX, variant-first support, and performance being made in the CSS-in-JS space! Definitely give [their documentation](https://stitches.dev/docs/introduction) a peruse to see all the brilliance being done.
+
+While exploring this library, I found a small theming gotcha when integrating it with my Gatsby site. If you are curious about using Stitches with Gatsby supporting a dark theme, read on to see my current solution.
+
+## Switching to Stitches
+
+Just as an experiment to test out Stitches, I decided to swap out `styled-component` with `@stitches/react`. I wanted to explore how easy the migration would be and what was required to support my site's dark theme.
+
+Swapping components was very straightforward, especially with the help of the [CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js) VS Code plugin. My initial reason for authoring my components using the tagged template literal method was to maintain closer compatibility with CSS. However, object styles are here to stay and are safe and more versatile structure for storing styles.
+
+A small plus, object styles are also a tad faster than runtime-parsed template strings. They also work better with libraries that support a typed interface (ex: [vanilla-extract], [Stitches]).
+
+## Theming with Stitches in Gatsby
+
+Back to the theming problem! The only other migration step was to update the theming layer. I followed the [dark theme pattern](https://www.joshwcomeau.com/react/dark-mode/) well explained and shared from [Josh Comaeu](https://www.joshwcomeau.com/) – thanks Josh! Using the Stitches [`getCssString`](https://stitches.dev/docs/api#getcssstring) helper, I was able to simplify my code a good bit. Stitches handles the addition of CSS custom properties based on your theme configuration, allowing me to [remove the chunk of code](https://github.com/samrose3/samrose.me/pull/3/commits/bf67678b74e3da25e46882795faa7f2fc01f16de#diff-b26a79685dd67a0833a9124b52b8e4ef4cf037512f54415906aa367e75420193L73) that was manually handling this step.
+
+Here is the final required code used in the site's SRR step:
+
+```js
+// gatsby-ssr.js
+
+import React from 'react';
+import Terser from 'terser';
+
+import { COLOR_MODE_KEY } from '../constants';
+import { darkTheme, getCssString } from '../stitches.config';
+
+function setColorsByTheme() {
+  const colorModeKey = '🔑';
+  const darkThemeClassName = '🌙';
+
+  const mql = window.matchMedia('(prefers-color-scheme: dark)');
+  const prefersDarkFromMQ = mql.matches;
+  const persistedPreference = localStorage.getItem(colorModeKey);
+
+  let colorMode = 'light';
+
+  const hasUsedToggle = typeof persistedPreference === 'string';
+
+  if (hasUsedToggle) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = prefersDarkFromMQ ? 'dark' : 'light';
+  }
+
+  let root = document.documentElement;
+  if (colorMode === 'dark') {
+    root.classList.add(darkThemeClassName);
+  }
+}
+
+const MagicScriptTag = () => {
+  const boundFn = String(setColorsByTheme)
+    .replace('🔑', COLOR_MODE_KEY)
+    .replace('🌙', darkTheme.className);
+
+  let calledFunction = `(${boundFn})()`;
+  calledFunction = Terser.minify(calledFunction).code;
+
+  return <script dangerouslySetInnerHTML={{ __html: calledFunction }} />;
+};
+
+const FallbackStyles = () => {
+  return (
+    <style
+      id="stitches"
+      dangerouslySetInnerHTML={{
+        __html: getCssString(),
+      }}
+    />
+  );
+};
+
+export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
+  setHeadComponents(<FallbackStyles key="fallback-styles" />);
+  setPreBodyComponents(<MagicScriptTag key="magic-script-tag" />);
+};
+```
+
+This is a slight variation of the Josh's strategy and that outlined in the Stitches tutorial. For some extra reading, I encourage checking out Josh's [full dark theme solution](https://www.joshwcomeau.com/react/dark-mode/) outline in his post or skimming the [source code example](https://github.com/joshwcomeau/dark-mode-minimal)!
+
+## Final adjustments
+
+The only other modification is to update the `ThemeContext` to toggle the appropriate className on the root document element:
+
+```tsx
+// ThemeContext.tsx
+
+import React from 'react';
+import { COLOR_MODE_KEY } from '../constants';
+import { darkTheme } from '../stitches.config';
+
+type ColorMode = 'light' | 'dark';
+type ThemeContextValue = {
+  colorMode: ColorMode;
+  setColorMode: (newValue: ColorMode) => void;
+};
+
+const themes = {
+  light: 'light',
+  dark: darkTheme.className,
+};
+
+export const ThemeContext = React.createContext<ThemeContextValue>({
+  colorMode: 'light',
+  setColorMode: () => {},
+});
+
+export const ThemeProvider: React.FC = ({ children }) => {
+  const [colorMode, rawSetColorMode] = React.useState<ColorMode>('light');
+
+  React.useEffect(() => {
+    const root = document.documentElement;
+    const initialColorMode = root.classList.contains(themes['dark'])
+      ? 'dark'
+      : 'light';
+    rawSetColorMode(initialColorMode);
+  }, []);
+
+  const contextValue: ThemeContextValue = React.useMemo(() => {
+    function setColorMode(newValue: ColorMode): void {
+      document.documentElement.classList.remove(themes[colorMode]);
+      document.documentElement.classList.add(themes[newValue]);
+      localStorage.setItem(COLOR_MODE_KEY, newValue);
+      rawSetColorMode(newValue);
+    }
+
+    return {
+      colorMode,
+      setColorMode,
+    };
+  }, [colorMode, rawSetColorMode]);
+
+  return (
+    <ThemeContext.Provider value={contextValue}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+```
+
+When running in _development_, the site may initially load in the default light mode. The Theme Context must first rendered in order to add the dark theme CSS custom properties to the page, which is done when `darkTheme.className` is used. I'm not a Stitches pro, but looking at the current source, it appears this occurs in the [`className` getter function](https://github.com/modulz/stitches/blob/main/packages/core/src/index.js#L126) which triggers a stylesheet update. Note that this may change in the future, as Stitches is still in beta.
+
+When built for _production_ however, the pages are are statically generated. The Theme Context should be run and rendered which will add the dark theme variables to the static version of the site, avoiding the flash of the light theme on the initial page load.
+
+## Conclusion
+
+This was a pretty niche problem, but I thought I'd share my current solution as I hadn't discovered one myself in the [docs](https://stitches.dev/blog/using-gatsby-with-stitches) or [example repos](https://github.com/peduarte/gatsby-with-stitches-demo/issues/1). Happy styling with Stitches, and big thanks to the team's awesome work. Looking forward to seeing Stitches evolve even more. 🧶🪡
+
+[stitches]: https://stitches.dev
+[vanilla-extract]: http://vanilla-extract.style
