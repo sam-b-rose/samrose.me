@@ -1,54 +1,51 @@
-import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 
-import { BREAKPOINTS } from '@constants';
+const Banner = styled('header', {
+  maxWidth: '80%',
+  marginTop: '3rem',
+  marginBottom: '8rem',
+  color: '$gray900',
+  fontWeight: '600',
+  fontFamily: '"IBM Plex Sans", $inter',
 
-const Banner = styled.header`
-  max-width: 80%;
-  margin-top: 3rem;
-  margin-bottom: 8rem;
-  color: var(--colors-gray900);
-  font-weight: 600;
-  font-family: 'IBM Plex Sans', var(--fonts-inter);
+  '& > time': {
+    color: '$secondary',
+    fontSize: '0.875rem',
+    fontWeight: '$medium',
+    textTransform: 'uppercase',
+    letterSpacing: '2px',
+  },
 
-  & > time {
-    color: var(--colors-secondary);
-    font-size: 0.875rem;
-    font-weight: var(--font-weight-medium);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
+  '& > h1': {
+    fontSize: '2.5rem',
 
-  & > h1 {
-    font-size: 2.5rem;
+    '&::after': {
+      content: '" ¬"',
+      display: 'inline-block',
+      color: '$gray300',
+    },
+  },
 
-    &::after {
-      content: '\\2009\\00AC';
-      display: inline-block;
-      color: var(--colors-gray300);
-    }
-  }
+  '& > p': {
+    color: '$gray700',
+    fontSize: '1.75rem',
+  },
 
-  & > p {
-    color: var(--colors-gray700);
-    font-size: 1.75rem;
-  }
+  '@bp2': {
+    marginBottom: '4rem',
 
-  @media ${BREAKPOINTS.sm} {
-    margin-bottom: 4rem;
+    '& > time': {
+      fontSize: '0.875rem',
+    },
 
-    & > time {
-      font-size: 0.875rem;
-    }
+    '& > h1': {
+      fontSize: '2.25rem',
+    },
 
-    & > h1 {
-      font-size: 2.25rem;
-    }
-
-    & > p {
-      font-size: 1.25rem;
-    }
-  }
-`;
+    '& > p': {
+      fontSize: '1.25rem',
+    },
+  },
+});
 
 export default Banner;
