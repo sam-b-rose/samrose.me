@@ -54,7 +54,7 @@ const PostsPage = ({ data }: { data: AllPosts }) => {
         <MainContent>
           <MaxWidthWrapper>
             {Object.keys(posts).map((category) => (
-              <Section>
+              <Section key={category}>
                 <h1>{capitalize(category)}</h1>
                 <PreviewGrid>
                   {posts[category].map(({ id, ...props }) => (

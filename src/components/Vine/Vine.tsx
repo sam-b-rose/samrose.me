@@ -19,7 +19,7 @@ const VineSVG = (props: SVGAttributes<SVGSVGElement>) => (
 );
 
 const Vine = styled(VineSVG)`
-  color: var(--color-gray-100);
+  color: var(--colors-gray100);
 `;
 
 export default Vine;

@@ -15,7 +15,7 @@ const NewsletterForm = () => (
       <IconBase
         icon={send}
         size={18}
-        style={{ color: 'var(--color-gray-600)' }}
+        style={{ color: 'var(--colors-gray600)' }}
       />
     </h3>
     <p>

@@ -8,11 +8,11 @@ const SkipLink = styled.a`
   clip: rect(0 0 0 0);
   margin: -1px;
   padding: 0;
-  box-shadow: 0 3px 8px 4px var(--color-shadow);
+  box-shadow: 0 3px 8px 4px var(--colors-shadow);
   border: 0;
   border-radius: 0.375rem;
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background-color: var(--colors-background);
+  color: var(--colors-text);
   font-weight: var(--font-weight-medium);
 
   &:focus {

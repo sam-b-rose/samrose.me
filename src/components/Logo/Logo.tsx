@@ -76,8 +76,8 @@ const RoseSVG = (props: SVGAttributes<SVGSVGElement>) => (
         y2="105.508"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stopColor="var(--color-logo-dark)" />
-        <stop offset="1" stopColor="var(--color-logo-light)" />
+        <stop stopColor="var(--colors-logoDark)" />
+        <stop offset="1" stopColor="var(--colors-logoLight)" />
       </linearGradient>
       <linearGradient
         id="paint1_linear"
@@ -87,8 +87,8 @@ const RoseSVG = (props: SVGAttributes<SVGSVGElement>) => (
         y2="119.992"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stopColor="var(--color-logo-dark)" />
-        <stop offset="1" stopColor="var(--color-logo-light)" />
+        <stop stopColor="var(--colors-logoDark)" />
+        <stop offset="1" stopColor="var(--colors-logoLight)" />
       </linearGradient>
       <linearGradient
         id="paint2_linear"
@@ -98,8 +98,8 @@ const RoseSVG = (props: SVGAttributes<SVGSVGElement>) => (
         y2="111.81"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stopColor="var(--color-logo-dark)" />
-        <stop offset="1" stopColor="var(--color-logo-light)" />
+        <stop stopColor="var(--colors-logoDark)" />
+        <stop offset="1" stopColor="var(--colors-logoLight)" />
       </linearGradient>
       <linearGradient
         id="paint3_linear"
@@ -109,8 +109,8 @@ const RoseSVG = (props: SVGAttributes<SVGSVGElement>) => (
         y2="107.966"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stopColor="var(--color-logo-dark)" />
-        <stop offset="1" stopColor="var(--color-logo-light)" />
+        <stop stopColor="var(--colors-logoDark)" />
+        <stop offset="1" stopColor="var(--colors-logoLight)" />
       </linearGradient>
       <linearGradient
         id="paint4_linear"
@@ -120,8 +120,8 @@ const RoseSVG = (props: SVGAttributes<SVGSVGElement>) => (
         y2="170.912"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stopColor="var(--color-logo-dark)" />
-        <stop offset="1" stopColor="var(--color-logo-light)" />
+        <stop stopColor="var(--colors-logoDark)" />
+        <stop offset="1" stopColor="var(--colors-logoLight)" />
       </linearGradient>
       <linearGradient
         id="paint5_linear"
@@ -131,8 +131,8 @@ const RoseSVG = (props: SVGAttributes<SVGSVGElement>) => (
         y2="189.809"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stopColor="var(--color-logo-dark)" />
-        <stop offset="1" stopColor="var(--color-logo-light)" />
+        <stop stopColor="var(--colors-logoDark)" />
+        <stop offset="1" stopColor="var(--colors-logoLight)" />
       </linearGradient>
       <linearGradient
         id="paint6_linear"
@@ -142,8 +142,8 @@ const RoseSVG = (props: SVGAttributes<SVGSVGElement>) => (
         y2="164.942"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stopColor="var(--color-logo-dark)" />
-        <stop offset="1" stopColor="var(--color-logo-light)" />
+        <stop stopColor="var(--colors-logoDark)" />
+        <stop offset="1" stopColor="var(--colors-logoLight)" />
       </linearGradient>
       <clipPath id="clip0">
         <path fill="#fff" d="M0 0h256v256H0z" />

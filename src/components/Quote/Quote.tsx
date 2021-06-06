@@ -6,7 +6,7 @@ const Quote = styled.blockquote`
   position: relative;
   font-size: 1.2em;
   font-style: italic;
-  color: var(--color-gray-700);
+  color: var(--colors-gray700);
   padding: 1rem 2rem;
   margin-top: 0;
   margin-right: auto;
@@ -29,7 +29,7 @@ const Quote = styled.blockquote`
     display: block;
     font-size: 5pc;
     font-family: Georgia;
-    color: var(--color-gray-400);
+    color: var(--colors-gray400);
   }
 `;
 

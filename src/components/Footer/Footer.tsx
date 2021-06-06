@@ -25,32 +25,32 @@ const Footer = () => (
           href="https://codepen.io/samrose3"
           icon={socialCodepen}
           iconHover={socialCodepen}
-          color={'var(--color-gray-400)'}
-          colorHover={'var(--color-gray-800)'}
+          color={'var(--colors-gray400)'}
+          colorHover={'var(--colors-gray900)'}
         />
         <ClickableIcon
           size={WIDTH}
           href="https://www.github.com/samrose3"
           icon={socialGithub}
           iconHover={socialGithub}
-          color={'var(--color-gray-400)'}
-          colorHover={'var(--color-gray-800)'}
+          color={'var(--colors-gray400)'}
+          colorHover={'var(--colors-gray900)'}
         />
         <ClickableIcon
           size={WIDTH}
           href="https://www.twitter.com/_samrose3_"
           icon={socialTwitter}
           iconHover={socialTwitter}
-          color={'var(--color-gray-400)'}
-          colorHover={'var(--color-gray-800)'}
+          color={'var(--colors-gray400)'}
+          colorHover={'var(--colors-gray900)'}
         />
         <ClickableIcon
           size={WIDTH}
           href="https://www.linkedin.com/in/samrose3"
           icon={socialLinkedin}
           iconHover={socialLinkedin}
-          color={'var(--color-gray-400)'}
-          colorHover={'var(--color-gray-800)'}
+          color={'var(--colors-gray400)'}
+          colorHover={'var(--colors-gray900)'}
         />
       </Icons>
     </FooterContent>
@@ -66,8 +66,8 @@ const FooterContent = styled(MaxWidthWrapper)`
   align-items: center;
   justify-content: space-between;
   padding: 3rem 1rem;
-  color: var(--color-gray-900);
-  border-top: 1px solid var(--color-gray-100);
+  color: var(--colors-gray900);
+  border-top: 1px solid var(--colors-gray100);
 
   @media ${BREAKPOINTS.sm} {
     flex-direction: column;
@@ -83,7 +83,7 @@ const Copyright = styled.div`
 const Icons = styled.div`
   position: relative;
   justify-content: space-between;
-  color: var(--color-gray-400);
+  color: var(--colors-gray400);
   font-size: 0.625rem;
   font-weight: bold;
   text-transform: uppercase;

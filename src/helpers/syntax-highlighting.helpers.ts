@@ -2,26 +2,26 @@ import { PrismTheme } from 'prism-react-renderer';
 
 export const syntaxTheme: PrismTheme = {
   plain: {
-    color: 'var(--syntax-fg)',
-    backgroundColor: 'var(--syntax-bg)',
-    fontFamily: 'var(--font-family-mono)',
+    color: 'var(--colors-syntaxFg)',
+    backgroundColor: 'var(--colors-syntaxBg)',
+    fontFamily: 'var(--fonts-mono)',
   },
   styles: [
     {
       types: ['prolog', 'comment', 'doctype', 'cdata'],
-      style: { color: 'var(--syntax-comment)' },
+      style: { color: 'var(--colors-syntaxComment)' },
     },
     {
       types: ['property', 'tag', 'deleted', 'constant', 'symbol'],
-      style: { color: 'var(--syntax-prop)' },
+      style: { color: 'var(--colors-syntaxProp)' },
     },
     {
       types: ['punctuation'],
-      style: { color: 'var(--syntax-punctuation)' },
+      style: { color: 'var(--colors-syntaxPunctuation)' },
     },
     {
       types: ['boolean', 'number'],
-      style: { color: 'var(--syntax-bool)' },
+      style: { color: 'var(--colors-syntaxBool)' },
     },
     {
       types: ['attr-name', 'tag'],
@@ -30,25 +30,25 @@ export const syntaxTheme: PrismTheme = {
     {
       types: ['string', 'attr-value'],
       style: {
-        color: 'var(--syntax-val)',
+        color: 'var(--colors-syntaxVal)',
       },
     },
     {
       types: ['keyword'],
       style: {
-        color: 'var(--syntax-keyword)',
+        color: 'var(--colors-syntaxKeyword)',
         fontStyle: 'italic',
       },
     },
     {
       types: ['operator', 'entity', 'url', 'string', 'language-css'],
       style: {
-        color: 'var(--syntax-str)',
+        color: 'var(--colors-syntaxStr)',
       },
     },
     {
       types: ['variable'],
-      style: { color: 'var(--syntax-variable)' },
+      style: { color: 'var(--colors-syntaxVariable)' },
     },
     {
       types: [
@@ -60,13 +60,13 @@ export const syntaxTheme: PrismTheme = {
         'script-punctuation',
       ],
       style: {
-        color: 'var(--syntax-name)',
+        color: 'var(--colors-syntaxName)',
       },
     },
     {
       types: ['deleted'],
       style: {
-        color: 'var(--syntax-del)',
+        color: 'var(--colors-syntaxDel)',
         fontStyle: 'italic',
       },
     },
@@ -79,13 +79,13 @@ export const syntaxTheme: PrismTheme = {
     {
       types: ['regex', 'important'],
       style: {
-        color: 'var(--syntax-regex)',
+        color: 'var(--colors-syntaxRegex)',
       },
     },
     {
       types: ['atrule', 'function'],
       style: {
-        color: 'var(--syntax-fn)',
+        color: 'var(--colors-syntaxFn)',
       },
     },
     {

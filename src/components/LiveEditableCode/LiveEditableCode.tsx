@@ -86,12 +86,13 @@ const Wrapper = styled(MaxWidthWrapper)`
   display: flex;
   overflow: hidden;
   border-radius: 0.75rem;
-  box-shadow: 0 3px 8px 0 var(--color-shadow);
+  box-shadow: 0 3px 8px 0 var(--colors-shadow);
   margin-top: 2rem;
   margin-bottom: 72px;
   padding: 0;
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--color-gray-300), 0 3px 8px 0 var(--color-shadow);
+    box-shadow: 0 0 0 2px var(--colors-gray300),
+      0 3px 8px 0 var(--colors-shadow);
   }
   @media ${BREAKPOINTS.md} {
     flex-direction: column;
@@ -105,7 +106,7 @@ const Wrapper = styled(MaxWidthWrapper)`
 const EditorWrapper = styled.div<{ split: number; maxHeight?: number }>`
   position: relative;
   flex: ${(props) => props.split};
-  background: var(--syntax-bg);
+  background: var(--colors-syntaxBg);
   max-height: ${(props) => props.maxHeight}px;
   overflow: auto;
 
@@ -125,7 +126,7 @@ const EditorWrapper = styled.div<{ split: number; maxHeight?: number }>`
     top: 0;
     right: 0;
     padding: 0.5rem 0.75rem;
-    color: var(--syntax-fg);
+    color: var(--colors-syntaxFg);
     font-size: 0.75rem;
     font-weight: bold;
   }

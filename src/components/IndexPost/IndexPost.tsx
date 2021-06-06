@@ -38,11 +38,11 @@ const IndexPost: React.FC<IndexPostProps> = ({
 );
 
 const PostLink = styled(Link)`
-  color: var(--color-text);
+  color: var(--colors-text);
   text-decoration: none;
 
   &:hover {
-    color: var(--color-primary);
+    color: var(--colors-primary);
   }
 `;
 
@@ -59,7 +59,7 @@ const PostTitle = styled.h2`
 const Date = styled.time`
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-gray-600);
+  color: var(--colors-gray600);
   text-transform: uppercase;
 `;
 

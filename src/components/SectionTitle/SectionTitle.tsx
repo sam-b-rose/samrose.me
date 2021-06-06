@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const SectionTitle = styled.h1`
-  color: var(--color-secondary);
+  color: var(--colors-secondary);
   font-size: 1rem;
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;

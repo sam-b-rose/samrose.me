@@ -36,7 +36,7 @@ const Link: React.FC<LinkProps> = ({ href, target, rel, ...delegated }) => {
 
 const ExternalLink = styled(OutboundLink)`
   color: ${(props) =>
-    props.theme === 'light' ? 'white' : 'var(--color-primary)'};
+    props.theme === 'light' ? 'white' : 'var(--colors-primary)'};
 `;
 
 const InternalLink = styled(ExternalLink).attrs((props) => ({

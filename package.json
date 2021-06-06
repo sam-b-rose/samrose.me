@@ -7,8 +7,9 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "gatsby serve",
     "start": "npm run develop",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },
@@ -22,6 +23,7 @@
     "@emotion/styled": "^11.0.0",
     "@mdx-js/mdx": "^1.0.0",
     "@mdx-js/react": "^1.0.0",
+    "@stitches/react": "^0.1.9",
     "@theme-ui/css": "^0.6.0-alpha.4",
     "@tippy.js/react": "^3.1.1",
     "babel-plugin-styled-components": "^1.11.1",

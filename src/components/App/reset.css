@@ -131,6 +131,6 @@ input,
 button,
 select,
 option {
-  font-family: var(--font-family);
-  font-weight: var(--font-weight-light);
+  font-family: var(--fonts-inter);
+  font-weight: var(--fontWeights-light);
 }
