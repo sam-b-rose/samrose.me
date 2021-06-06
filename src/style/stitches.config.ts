@@ -1,6 +1,6 @@
 import { createCss } from '@stitches/react';
 
-export const { styled, css, theme, getCssString } = createCss({
+export const { styled, css, theme, global, getCssString } = createCss({
   theme: {
     colors: {
       text: 'hsl(222, 22%, 5%)',
@@ -62,11 +62,11 @@ export const { styled, css, theme, getCssString } = createCss({
     },
   },
   media: {
-    bp1: '(min-width: 320px)',
-    bp2: '(min-width: 540px)',
-    bp3: '(min-width: 900px)',
-    bp4: '(min-width: 1024px)',
-    bp5: '(min-width: 1440px)',
+    bp1: '(max-width: 320px)',
+    bp2: '(max-width: 540px)',
+    bp3: '(max-width: 900px)',
+    bp4: '(max-width: 1024px)',
+    bp5: '(max-width: 1440px)',
   },
 });
 

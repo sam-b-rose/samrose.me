@@ -2,10 +2,11 @@ import React from 'react';
 import Terser from 'terser';
 
 import { COLOR_MODE_KEY } from '@constants';
-import { darkTheme, getCssString } from './src/stitches.config';
+import { darkTheme, getCssString } from '@style';
 
 function setColorsByTheme() {
   const colorModeKey = '🔑';
+  const darkThemeClassName = '🌙';
 
   const mql = window.matchMedia('(prefers-color-scheme: dark)');
   const prefersDarkFromMQ = mql.matches;
@@ -23,12 +24,14 @@ function setColorsByTheme() {
 
   let root = document.documentElement;
   if (colorMode === 'dark') {
-    root.classList.add('dark');
+    root.classList.add(darkThemeClassName);
   }
 }
 
 const MagicScriptTag = () => {
-  const boundFn = String(setColorsByTheme).replace('🔑', COLOR_MODE_KEY);
+  const boundFn = String(setColorsByTheme)
+    .replace('🔑', COLOR_MODE_KEY)
+    .replace('🌙', darkTheme.className);
 
   let calledFunction = `(${boundFn})()`;
   calledFunction = Terser.minify(calledFunction).code;
@@ -37,9 +40,6 @@ const MagicScriptTag = () => {
 };
 
 const FallbackStyles = () => {
-  // call darkTheme to import theme vars
-  darkTheme.className;
-
   return (
     <style
       id="stitches"
