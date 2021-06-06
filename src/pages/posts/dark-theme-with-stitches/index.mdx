@@ -16,7 +16,7 @@ While exploring this library, I found a small theming gotcha when integrating it
 
 Just as an experiment to test out Stitches, I decided to swap out `styled-component` with `@stitches/react`. I wanted to explore how easy the migration would be and what was required to support my site's dark theme.
 
-Swapping components was very straightforward, especially with the help of the [CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js) VS Code plugin. My initial reason for authoring my components using the tagged template literal method was to maintain closer compatibility with CSS. However, object styles are here to stay and are safe and more versatile structure for storing styles.
+Swapping components was very straightforward, especially with the help of the [CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js) VS Code plugin. My initial reason for authoring my components using the tagged template literal method was to maintain closer compatibility with CSS. However, object styles are here to stay and are a safe and more versatile structure for storing styles.
 
 A small plus, object styles are also a tad faster than runtime-parsed template strings. They also work better with libraries that support a typed interface (ex: [vanilla-extract], [Stitches]).
 
@@ -87,7 +87,7 @@ export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
 };
 ```
 
-This is a slight variation of the Josh's strategy and that outlined in the Stitches tutorial. For some extra reading, I encourage checking out Josh's [full dark theme solution](https://www.joshwcomeau.com/react/dark-mode/) outline in his post or skimming the [source code example](https://github.com/joshwcomeau/dark-mode-minimal)!
+This is a slight variation of Josh's strategy and solution outlined in the Stitches tutorial. For some extra reading, I encourage checking out Josh's [full dark theme solution](https://www.joshwcomeau.com/react/dark-mode/) or digging into the [source code example](https://github.com/joshwcomeau/dark-mode-minimal)!
 
 ## Final adjustments
 
@@ -149,9 +149,9 @@ export const ThemeProvider: React.FC = ({ children }) => {
 };
 ```
 
-When running in _development_, the site may initially load in the default light mode. The Theme Context must first rendered in order to add the dark theme CSS custom properties to the page, which is done when `darkTheme.className` is used. I'm not a Stitches pro, but looking at the current source, it appears this occurs in the [`className` getter function](https://github.com/modulz/stitches/blob/main/packages/core/src/index.js#L126) which triggers a stylesheet update. Note that this may change in the future, as Stitches is still in beta.
+When running in _development_, the site may initially load in the default light mode. The dark theme CSS custom properties are added to the page when `darkTheme.className` is used in `ThemeContext.tsx`. I'm not a Stitches pro, but looking at the current source, it appears this occurs in the [`className` getter function](https://github.com/modulz/stitches/blob/main/packages/core/src/index.js#L126) which triggers a stylesheet update. Note that this may change in the future, as Stitches is in beta.
 
-When built for _production_ however, the pages are are statically generated. The Theme Context should be run and rendered which will add the dark theme variables to the static version of the site, avoiding the flash of the light theme on the initial page load.
+When built for _production_, however, the pages are statically generated. The Theme Context should be run and rendered which will add the dark theme variables to the static version of the site, avoiding the flash of the light theme on the initial page load.
 
 ## Conclusion
 
