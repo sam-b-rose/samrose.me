@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 
 import { ThemeContext } from '@components/ThemeContext';
 import InvisibleButton from '@components/InvisibleButton';
@@ -88,9 +88,9 @@ const DarkToggle = () => {
   );
 };
 
-const ToggleButton = styled(InvisibleButton)`
-  display: flex;
-  align-items: center;
-`;
+const ToggleButton = styled(InvisibleButton, {
+  display: 'flex',
+  alignItems: 'center',
+});
 
 export default DarkToggle;

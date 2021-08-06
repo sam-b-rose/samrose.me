@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import { styled } from '@style';
 
-const Em = styled.em`
-  font-family: 'Fugaz One', sans-serif;
-  font-size: 1.05em;
-  color: ${(props) => props.color || 'var(--colors-secondary)'};
-  font-style: normal;
-  .tippy-popper & {
-    color: white !important;
-  }
-`;
+const Em = styled('em', {
+  fontFamily: '"Fugaz One", sans-serif',
+  fontSize: '1.05em',
+  color: '$secondary',
+  fontStyle: 'normal',
+  '.tippy-popper &': {
+    color: 'white !important',
+  },
+});
 
 export default Em;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 import { socialRss } from 'react-icons-kit/ionicons/socialRss';
 
 import ClickableIcon from '@components/ClickableIcon';
@@ -32,29 +32,29 @@ const Header = () => {
   );
 };
 
-const Wrapper = styled.header`
-  display: flex;
-`;
+const Wrapper = styled('header', {
+  display: 'flex',
+});
 
-const HeaderContent = styled(MaxWidthWrapper)`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 1.5rem;
-  padding-bottom: 0.75rem;
-  align-items: center;
-`;
+const HeaderContent = styled(MaxWidthWrapper, {
+  display: 'flex',
+  justifyContent: 'space-between',
+  paddingTop: '1.5rem',
+  paddingBottom: '0.75rem',
+  alignItems: 'center',
+});
 
-const IconGroup = styled.div`
-  display: flex;
+const IconGroup = styled('div', {
+  display: 'flex',
 
-  & > * {
-    margin-left: 1rem;
-    opacity: 0.7;
+  '& > *': {
+    marginLeft: '1rem',
+    opacity: '0.7',
 
-    &:hover {
-      opacity: 1;
-    }
-  }
-`;
+    '&:hover': {
+      opacity: '1',
+    },
+  },
+});
 
 export default Header;

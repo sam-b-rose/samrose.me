@@ -1,14 +1,10 @@
-/**
- * Utility component that lets its children take up the full screen width,
- * even when within a fixed-width parent.
- */
-import styled from 'styled-components';
+import { styled } from '@style';
 
-export default styled.div`
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-`;
+export default styled('div', {
+  width: '100vw',
+  position: 'relative',
+  left: '50%',
+  right: '50%',
+  marginLeft: '-50vw',
+  marginRight: '-50vw',
+});

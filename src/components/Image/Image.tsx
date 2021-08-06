@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 
 import { BREAKPOINTS } from '@constants';
 
@@ -31,29 +31,29 @@ const Image: React.FC<ImageProps> = ({
   );
 };
 
-const Wrapper = styled.span`
-  display: block;
-  margin: 40px auto 80px;
-  padding: 10px;
+const Wrapper = styled('span', {
+  display: 'block',
+  margin: '40px auto 80px',
+  padding: '10px',
 
-  @media ${BREAKPOINTS.sm} {
-    padding: 0;
-    border: none;
-  }
-`;
+  [`@media ${BREAKPOINTS.sm}`]: {
+    padding: '0',
+    border: 'none',
+  },
+});
 
-const Caption = styled.span`
-  display: block;
-  padding-top: 6px;
-  font-size: 14px;
-  text-align: center;
-`;
+const Caption = styled('span', {
+  display: 'block',
+  paddingTop: '6px',
+  fontSize: '14px',
+  textAlign: 'center',
+});
 
-const Img = styled.img`
-  display: block;
-  width: auto;
-  border-radius: 3px;
-  margin: auto; /* In case width is overridden, center it */
-`;
+const Img = styled('img', {
+  display: 'block',
+  width: 'auto',
+  borderRadius: '3px',
+  margin: 'auto /* In case width is overridden, center it */',
+});
 
 export default Image;

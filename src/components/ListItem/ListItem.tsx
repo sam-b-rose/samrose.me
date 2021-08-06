@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 import IconBase from 'react-icons-kit';
 import { arrowRightC } from 'react-icons-kit/ionicons/arrowRightC';
 
@@ -33,16 +33,16 @@ const ListItem: React.FC<ListItemProps> = ({ type = 'default', children }) => {
   );
 };
 
-const Wrapper = styled.li`
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 16px;
-`;
+const Wrapper = styled('li', {
+  display: 'flex',
+  alignItems: 'flex-start',
+  marginBottom: '16px',
+});
 
-const IconWrapper = styled.div`
-  padding-right: 16px;
-`;
+const IconWrapper = styled('div', {
+  paddingRight: '16px',
+});
 
-const Children = styled.div``;
+const Children = styled('div', {});
 
 export default ListItem;

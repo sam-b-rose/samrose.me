@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 import { socialTwitter } from 'react-icons-kit/ionicons/socialTwitter';
 import { socialCodepen } from 'react-icons-kit/ionicons/socialCodepen';
 import { socialGithub } from 'react-icons-kit/ionicons/socialGithub';
@@ -57,50 +57,51 @@ const Footer = () => (
   </Wrapper>
 );
 
-const Wrapper = styled.footer`
-  display: flex;
-`;
+const Wrapper = styled('footer', {
+  display: 'flex',
+});
 
-const FooterContent = styled(MaxWidthWrapper)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 3rem 1rem;
-  color: var(--colors-gray900);
-  border-top: 1px solid var(--colors-gray100);
+const FooterContent = styled(MaxWidthWrapper, {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  padding: '3rem 1rem',
+  color: '$gray900',
+  borderTop: '1px solid',
+  borderTopColor: '$gray100',
 
-  @media ${BREAKPOINTS.sm} {
-    flex-direction: column;
-  }
-`;
+  [`@media ${BREAKPOINTS.sm}`]: {
+    flexDirection: 'column',
+  },
+});
 
-const Copyright = styled.div`
-  font-size: 0.875rem;
-  text-align: left;
-  line-height: 1.75;
-`;
+const Copyright = styled('div', {
+  fontSize: '0.875rem',
+  textAlign: 'left',
+  lineHeight: '1.75',
+});
 
-const Icons = styled.div`
-  position: relative;
-  justify-content: space-between;
-  color: var(--colors-gray400);
-  font-size: 0.625rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-align: center;
-  margin-top: 1rem;
+const Icons = styled('div', {
+  position: 'relative',
+  justifyContent: 'space-between',
+  color: '$gray400',
+  fontSize: '0.625rem',
+  fontWeight: 'bold',
+  textTransform: 'uppercase',
+  textAlign: 'center',
+  marginTop: '1rem',
 
-  & > *:not(:first-of-type) {
-    margin-left: 0.75rem;
-  }
+  '& > *:not(:first-of-type)': {
+    marginLeft: '0.75rem',
+  },
 
-  @media ${BREAKPOINTS.desktop} {
-    margin-top: 0;
+  [`@media ${BREAKPOINTS.desktop}`]: {
+    marginTop: 0,
 
-    & > * {
-      text-align: right;
-    }
-  }
-`;
+    '& > *': {
+      textAlign: 'right',
+    },
+  },
+});
 
 export default Footer;

@@ -1,12 +1,11 @@
-import styled from 'styled-components';
+import { styled } from '@style';
 
-const SectionTitle = styled.h1`
-  color: var(--colors-secondary);
-  font-size: 1rem;
-  font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-`;
+const SectionTitle = styled('h1', {
+  color: '$secondary',
+  fontSize: '1rem',
+  fontWeight: '$medium',
+  textTransform: 'uppercase',
+  letterSpacing: '2px',
+});
 
 export default SectionTitle;

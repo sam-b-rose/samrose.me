@@ -2,7 +2,7 @@
  * A post summary, found on the homepage
  */
 import React from 'react';
-import styled from 'styled-components';
+import { styled, darkTheme } from '@style';
 
 import { BREAKPOINTS } from '@constants';
 import { humanizeDate } from '@helpers/date.helpers';
@@ -37,35 +37,37 @@ const IndexPost: React.FC<IndexPostProps> = ({
   </>
 );
 
-const PostLink = styled(Link)`
-  color: var(--colors-text);
-  text-decoration: none;
+const PostLink = styled(Link, {
+  [`&, .${darkTheme} &`]: {
+    color: '$text',
+    textDecoration: 'none',
 
-  &:hover {
-    color: var(--colors-primary);
-  }
-`;
+    '&:hover': {
+      color: '$primary',
+    },
+  },
+});
 
-const PostTitle = styled.h2`
-  font-size: 1.375rem;
-  font-weight: 600;
-  letter-spacing: -1px;
+const PostTitle = styled('h2', {
+  fontSize: '1.375rem',
+  fontWeight: '600',
+  letterSpacing: '-1px',
 
-  @media ${BREAKPOINTS.sm} {
-    font-size: 1.75rem;
-  }
-`;
+  [`@media ${BREAKPOINTS.sm}`]: {
+    fontSize: '1.75rem',
+  },
+});
 
-const Date = styled.time`
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--colors-gray600);
-  text-transform: uppercase;
-`;
+const Date = styled('time', {
+  fontSize: '0.875rem',
+  fontWeight: '500',
+  color: '$gray600',
+  textTransform: 'uppercase',
+});
 
-const Excerpt = styled(Paragraph)`
-  margin: 1rem 0;
-  font-size: 1rem;
-`;
+const Excerpt = styled(Paragraph, {
+  margin: '1rem 0',
+  fontSize: '1rem',
+});
 
 export default IndexPost;

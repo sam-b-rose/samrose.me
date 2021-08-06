@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import GatsbyLink from 'gatsby-link';
-import styled from 'styled-components';
+import { styled, darkTheme } from '@style';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 type LinkProps = HTMLAttributes<HTMLAnchorElement> & {
@@ -12,35 +12,34 @@ type LinkProps = HTMLAttributes<HTMLAnchorElement> & {
 const Link: React.FC<LinkProps> = ({ href, target, rel, ...delegated }) => {
   // Links are external if they start with `http` or `https`
   const external = href.match(/(^http|^mailto)/i);
+  const internal = !external;
 
   // By default, external links should open in a new tab.
   if (typeof target === 'undefined') {
     target = external ? '_blank' : '_self';
   }
 
-  const LinkComponent = external ? ExternalLink : InternalLink;
+  let linkProps = {};
+  // @ts-ignore
+  linkProps[external ? 'href' : 'to'] = href;
 
   const safeRel = target === '_blank' ? 'noopener noreferrer' : rel;
 
   return (
     // @ts-ignore
-    <LinkComponent
+    <StyledLink
+      // @ts-ignore
       as={external ? 'a' : GatsbyLink}
-      href={href}
       rel={safeRel}
       target={target}
+      {...linkProps}
       {...delegated}
     />
   );
 };
 
-const ExternalLink = styled(OutboundLink)`
-  color: ${(props) =>
-    props.theme === 'light' ? 'white' : 'var(--colors-primary)'};
-`;
-
-const InternalLink = styled(ExternalLink).attrs((props) => ({
-  to: props.href,
-}))``;
+const StyledLink = styled(OutboundLink, {
+  color: '$primary',
+});
 
 export default Link;

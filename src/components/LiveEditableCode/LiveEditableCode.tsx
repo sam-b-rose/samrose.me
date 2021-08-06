@@ -1,6 +1,6 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import styled from 'styled-components';
+import { styled } from '@style';
 
 import { BREAKPOINTS } from '@constants';
 import { interactWithCodeSample } from '@helpers/analytics.helpers';
@@ -65,15 +65,14 @@ const LiveEditableCode: React.FC<LiveEditableCodeProps> = ({
     >
       <Wrapper>
         <EditorWrapper
-          split={leftSplit}
-          maxHeight={maxHeight}
+          css={{ flex: leftSplit, maxHeight }}
           onClick={trackChange}
           data-language="jsx"
         >
           <LiveEditor />
         </EditorWrapper>
 
-        <PreviewWrapper split={rightSplit}>
+        <PreviewWrapper css={{ flex: rightSplit }}>
           <LiveError />
           <LivePreview />
         </PreviewWrapper>
@@ -82,59 +81,57 @@ const LiveEditableCode: React.FC<LiveEditableCodeProps> = ({
   );
 };
 
-const Wrapper = styled(MaxWidthWrapper)`
-  display: flex;
-  overflow: hidden;
-  border-radius: 0.75rem;
-  box-shadow: 0 3px 8px 0 var(--colors-shadow);
-  margin-top: 2rem;
-  margin-bottom: 72px;
-  padding: 0;
-  &:focus-within {
-    box-shadow: 0 0 0 2px var(--colors-gray300),
-      0 3px 8px 0 var(--colors-shadow);
-  }
-  @media ${BREAKPOINTS.md} {
-    flex-direction: column;
-  }
-  @media ${BREAKPOINTS.sm} {
-    padding-left: 0;
-    padding-right: 0;
-  }
-`;
+const Wrapper = styled(MaxWidthWrapper, {
+  display: 'flex',
+  overflow: 'hidden',
+  borderRadius: '0.75rem',
+  boxShadow: '0 3px 8px 0 var(--colors-shadow)',
+  marginTop: '2rem',
+  marginBottom: '72px',
+  padding: '0',
 
-const EditorWrapper = styled.div<{ split: number; maxHeight?: number }>`
-  position: relative;
-  flex: ${(props) => props.split};
-  background: var(--colors-syntaxBg);
-  max-height: ${(props) => props.maxHeight}px;
-  overflow: auto;
+  '&:focus-within': {
+    boxShadow:
+      '0 0 0 2px var(--colors-gray300), 0 3px 8px 0 var(--colors-shadow)',
+  },
 
-  /*
-    The code should not be editable on smaller screens.
-    It's too janky of an experience.
-    Show the code, but ignore taps.
-  */
-  @media ${BREAKPOINTS.sm} {
-    textarea {
-      pointer-events: none;
-    }
-  }
-  &::after {
-    content: attr(data-language);
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0.5rem 0.75rem;
-    color: var(--colors-syntaxFg);
-    font-size: 0.75rem;
-    font-weight: bold;
-  }
-`;
+  [`@media ${BREAKPOINTS.md}`]: {
+    flexDirection: 'column',
+  },
 
-const PreviewWrapper = styled.div<{ split: number }>`
-  padding: 16px;
-  flex: ${(props) => props.split};
-`;
+  [`@media ${BREAKPOINTS.sm}`]: {
+    paddingLeft: '0',
+    paddingRight: '0',
+  },
+});
+
+const EditorWrapper = styled('div', {
+  position: 'relative',
+  flex: 1,
+  backgroundColor: '$syntaxBg',
+  overflow: 'auto',
+
+  [`@media ${BREAKPOINTS.sm}`]: {
+    textarea: {
+      pointerEvents: 'none',
+    },
+  },
+
+  '&::after': {
+    content: 'attr(data-language)',
+    position: 'absolute',
+    top: '0',
+    right: '0',
+    padding: '0.5rem 0.75rem',
+    color: '$syntaxFg',
+    fontSize: '0.75rem',
+    fontWeight: 'bold',
+  },
+});
+
+const PreviewWrapper = styled('div', {
+  padding: '16px',
+  flex: 1,
+});
 
 export default LiveEditableCode;

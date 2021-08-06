@@ -1,5 +1,5 @@
 import React, { SVGAttributes } from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 
 type VineProps = {
   size?: string;
@@ -18,8 +18,8 @@ const VineSVG = (props: SVGAttributes<SVGSVGElement>) => (
   </svg>
 );
 
-const Vine = styled(VineSVG)`
-  color: var(--colors-gray100);
-`;
+const Vine = styled(VineSVG, {
+  color: '$gray100',
+});
 
 export default Vine;

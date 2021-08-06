@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
+import { styled } from '@style';
 
 import { siteMetadata } from '../../../gatsby-config';
 
@@ -72,24 +72,24 @@ const PostsPage = ({ data }: { data: AllPosts }) => {
   );
 };
 
-const Section = styled.section`
-  margin: 3rem 0;
+const Section = styled('section', {
+  margin: '3rem 0',
 
-  & > h1 {
-    margin-bottom: 1rem;
-    font-size: 2rem;
-  }
+  '& > h1': {
+    marginBottom: '1rem',
+    fontSize: '2rem',
+  },
 
-  &:last-of-type {
-    margin-bottom: 6rem;
-  }
-`;
+  '&:last-of-type': {
+    marginBottom: '6rem',
+  },
+});
 
-const PreviewGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  gap: 2rem;
-`;
+const PreviewGrid = styled('div', {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(20rem, 1fr))',
+  gap: '2rem',
+});
 
 const sortDatesDescending = (a: Post, b: Post) => {
   return a.publishedOn > b.publishedOn ? -1 : 1;

@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import { styled } from '@style';
 
-export default styled.span`
-  display: inline-block;
-  font-family: var(--fonts-mono);
-  font-size: 0.85em;
-  letter-spacing: -0.5px;
-  padding: 0 6px;
-  background: var(--colors-gray100);
-  border-radius: 0.25rem;
-  white-space: nowrap;
-`;
+export default styled('span', {
+  display: 'inline-block',
+  fontFamily: '$mono',
+  fontSize: '0.85em',
+  letterSpacing: '-0.5px',
+  padding: '0 6px',
+  backgroundColor: '$gray100',
+  borderRadius: '0.25rem',
+  whiteSpace: 'nowrap',
+});

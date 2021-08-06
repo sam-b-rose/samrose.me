@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 import IconBase from 'react-icons-kit';
 
 import Link from '@components/Link';
@@ -45,36 +45,38 @@ export const ClickableIcon: React.FC<ClickableIconProps> = ({
   );
 };
 
-const ButtonWrapper = styled(InvisibleButton)`
-  position: relative;
-  display: inline-block;
-`;
+const ButtonWrapper = styled(InvisibleButton, {
+  position: 'relative',
+  display: 'inline-block',
+});
 
-const LinkWrapper = styled(Link)`
-  position: relative;
-  display: inline-block;
-`;
+const LinkWrapper = styled(Link, {
+  position: 'relative',
+  display: 'inline-block',
+});
 
-const IconWrapper = styled.span`
-  display: inline-block;
-  position: relative;
-  z-index: 1;
-`;
+const IconWrapper = styled('span', {
+  display: 'inline-block',
+  position: 'relative',
+  zIndex: 1,
+});
 
-const IconHoverWrapper = styled.span`
-  display: inline-block;
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 200ms;
-  ${LinkWrapper}:hover & {
-    opacity: 1;
-  }
-  ${ButtonWrapper}:hover & {
-    opacity: 1;
-  }
-`;
+const IconHoverWrapper = styled('span', {
+  display: 'inline-block',
+  position: 'absolute',
+  zIndex: '2',
+  top: 0,
+  left: 0,
+  opacity: 0,
+  transition: 'opacity 200ms',
+
+  [`${LinkWrapper}:hover &`]: {
+    opacity: 1,
+  },
+
+  [`${ButtonWrapper}:hover &`]: {
+    opacity: 1,
+  },
+});
 
 export default ClickableIcon;

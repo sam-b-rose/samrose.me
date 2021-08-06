@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 
 import Banner from '@components/Banner';
 import BlogCard from '@components/BlogCard';
@@ -71,19 +71,20 @@ const BlogPost: React.FC<BlogPostProps> = ({ children, ...props }) => {
   );
 };
 
-const PostSection = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-`;
+const PostSection = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  margin: '2rem 0',
+});
 
-const InlineLinks = styled.footer`
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: repeat(3, auto);
-  justify-content: start;
-  border-bottom: 1px solid var(--colors-gray100);
-  padding: 2rem 0;
-`;
+const InlineLinks = styled('footer', {
+  display: 'grid',
+  gridGap: '0.5rem',
+  gridTemplateColumns: 'repeat(3, auto)',
+  justifyContent: 'start',
+  borderBottom: '1px solid',
+  borderBottomColor: '$gray100',
+  padding: '2rem 0',
+});
 
 export default BlogPost;

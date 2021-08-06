@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import { styled } from '@style';
 
-const Card = styled.div`
-  box-shadow: 0 3px 8px 0 var(--colors-shadow);
-  background: var(--colors-subtle);
-  border-radius: 0.5rem;
-  padding: 2rem;
-`;
+const Card = styled('div', {
+  boxShadow: '0 3px 8px 0 $colors$shadow',
+  backgroundColor: '$subtle',
+  borderRadius: '0.5rem',
+  padding: '2rem',
+});
 
 export default Card;

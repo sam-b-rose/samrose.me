@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 import IconBase from 'react-icons-kit';
 import { link as linkIcon } from 'react-icons-kit/ionicons/link';
 
@@ -54,61 +54,60 @@ const Heading: React.FC<HeadingProps> = ({
   );
 };
 
-const Base = styled.div`
-  position: relative;
-  font-weight: 700;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  margin-bottom: 1rem;
-`;
+const Base = styled('div', {
+  position: 'relative',
+  fontWeight: '700',
+  lineHeight: '1.5',
+  webkitFontSmoothing: 'antialiased',
+  textRendering: 'optimizeLegibility',
+  marginBottom: '1rem',
+});
 
-const H1 = styled(Base)`
-  font-size: 3rem;
-  letter-spacing: -2px;
-`;
+const H1 = styled(Base, {
+  fontSize: '3rem',
+  letterSpacing: '-2px',
+});
 
-const H2 = styled(Base)`
-  font-size: 2rem;
-  letter-spacing: -0.5px;
-  padding-top: 4rem;
-`;
+const H2 = styled(Base, {
+  fontSize: '2rem',
+  letterSpacing: '-0.5px',
+  paddingTop: '4rem',
+});
 
-const H3 = styled(Base)`
-  font-size: 1.5rem;
-  padding-top: 4rem;
-`;
+const H3 = styled(Base, {
+  fontSize: '1.5rem',
+  paddingTop: '4rem',
+});
 
-const H4 = styled(Base)`
-  font-size: 1.25rem;
-  padding-top: 2rem;
-`;
+const H4 = styled(Base, {
+  fontSize: '1.25rem',
+  paddingTop: '2rem',
+});
 
-const H5 = styled(Base)`
-  font-size: 1rem;
-`;
+const H5 = styled(Base, {
+  fontSize: '1rem',
+});
 
-const H6 = styled(Base)`
-  font-size: 1rem;
-`;
+const H6 = styled(Base, {
+  fontSize: '1rem',
+});
 
-const Anchor = styled.a`
-  display: none;
+const Anchor = styled('a', {
+  display: 'none',
 
-  @media ${BREAKPOINTS.mdMin} {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translateX(-125%);
-    transition: opacity 250ms;
-    opacity: 0;
+  [`@media ${BREAKPOINTS.mdMin}`]: {
+    display: 'block',
+    position: 'absolute',
+    bottom: '0',
+    left: '0',
+    transform: 'translateX(-125%)',
+    transition: 'opacity 250ms',
+    opacity: '0',
 
-    ${Base}:hover &,
-    &:focus {
-      opacity: 0.75;
-    }
-  }
-`;
+    [`${Base}:hover &, &:focus`]: {
+      opacity: 0.75,
+    },
+  },
+});
 
 export default Heading;

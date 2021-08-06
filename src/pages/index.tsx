@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 
@@ -64,11 +64,11 @@ const IndexPage = ({ data }: { data: RecentPosts }) => {
           <MainContent>
             <RecentSection>
               <SectionTitle>Recently Published</SectionTitle>
-              <Spacer size="2rem" />
+              <Spacer css={{ '--size': '2rem' }} />
               {posts.map(({ id, ...props }) => (
                 <div key={id}>
                   <IndexPost {...props} />
-                  <Spacer size="5rem" />
+                  <Spacer css={{ '--size': '5rem' }} />
                 </div>
               ))}
             </RecentSection>
@@ -79,14 +79,14 @@ const IndexPage = ({ data }: { data: RecentPosts }) => {
   );
 };
 
-const RecentSection = styled.section`
-  margin-top: 10rem;
-  margin-bottom: 3rem;
+const RecentSection = styled('section', {
+  marginTop: '10rem',
+  marginBottom: '3rem',
 
-  @media ${BREAKPOINTS.desktop} {
-    margin-top: 12rem;
-  }
-`;
+  [`@media ${BREAKPOINTS.desktop}`]: {
+    marginTop: '12rem',
+  },
+});
 
 const sortDatesDescending = (a: Post, b: Post) => {
   return a.publishedOn > b.publishedOn ? -1 : 1;

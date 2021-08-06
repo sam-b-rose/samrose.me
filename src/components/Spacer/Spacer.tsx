@@ -1,12 +1,13 @@
-import styled from 'styled-components';
+import { styled } from '@style';
 
 interface SpacerProps {
   size: string | number;
 }
 
-const Spacer = styled.div<SpacerProps>`
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
-`;
+const Spacer = styled('div', {
+  '--size': 0,
+  width: 'var(--size)',
+  height: 'var(--size)',
+});
 
 export default Spacer;

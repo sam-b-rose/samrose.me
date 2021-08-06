@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 import IconBase from 'react-icons-kit';
 import { send } from 'react-icons-kit/feather/send';
 
@@ -41,20 +41,20 @@ const NewsletterForm = () => (
   </Wrapper>
 );
 
-const Wrapper = styled.div`
-  display: grid;
-  grid-gap: 1.5rem;
-`;
+const Wrapper = styled('div', {
+  display: 'grid',
+  gridGap: '1.5rem',
+});
 
-const InlineForm = styled.div`
-  display: grid;
-  grid-gap: 0.75rem;
-  grid-template-columns: auto;
+const InlineForm = styled('div', {
+  display: 'grid',
+  gridGap: '0.75rem',
+  gridTemplateColumns: 'auto',
 
-  @media ${BREAKPOINTS.smMin} {
-    grid-template-columns: repeat(2, auto);
-    justify-content: start;
-  }
-`;
+  [`@media ${BREAKPOINTS.smMin}`]: {
+    gridTemplateColumns: 'repeat(2, auto)',
+    justifyContent: 'start',
+  },
+});
 
 export default NewsletterForm;

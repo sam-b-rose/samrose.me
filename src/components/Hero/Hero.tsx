@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 
 const Hero = () => (
   <HeroWrapper>
@@ -53,27 +53,27 @@ const Hero = () => (
   </HeroWrapper>
 );
 
-const HeroWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: 0;
-`;
+const HeroWrapper = styled('div', {
+  position: 'absolute',
+  top: '0',
+  right: '0',
+  left: '0',
+  overflow: 'hidden',
+  zIndex: '0',
+});
 
-const HeroSVG = styled.svg`
-  position: relative;
-  top: 0;
-  margin-top: -30rem;
-  margin-left: -110rem;
-  left: 50%;
-  overflow: hidden;
-  z-index: 0;
+const HeroSVG = styled('svg', {
+  position: 'relative',
+  top: '0',
+  marginTop: '-30rem',
+  marginLeft: '-110rem',
+  left: '50%',
+  overflow: 'hidden',
+  zIndex: '0',
 
-  @media (min-width: 1800px) {
-    margin-left: -150rem;
-  }
-`;
+  '@media (minWidth: 1800px)': {
+    marginLeft: '-150rem',
+  },
+});
 
 export default Hero;

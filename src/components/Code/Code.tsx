@@ -1,7 +1,7 @@
 import React from 'react';
 import { LiveProvider, LiveEditor } from 'react-live';
 import { Language } from 'prism-react-renderer';
-import styled from 'styled-components';
+import { styled } from '@style';
 
 import { BREAKPOINTS } from '@constants';
 import { syntaxTheme } from '@helpers/syntax-highlighting.helpers';
@@ -32,51 +32,45 @@ const Code: React.FC<CodeProps> = ({ children, maxHeight, className = '' }) => {
       language={language}
       theme={syntaxTheme}
     >
-      <EditorWrapper maxHeight={maxHeight} data-language={language}>
+      <EditorWrapper css={{ maxHeight }} data-language={language}>
         <LiveEditor style={{ whiteSpace: 'pre' }} />
       </EditorWrapper>
     </LiveProvider>
   );
 };
 
-const EditorWrapper = styled.div<{ maxHeight?: number | string }>`
-  position: relative;
-  flex: 1;
-  padding: 1em;
-  background: var(--colors-syntaxBg);
-  border-radius: 0.75rem;
-  max-height: ${(props) =>
-    typeof props.maxHeight === 'undefined'
-      ? null
-      : typeof props.maxHeight === 'number'
-      ? `${props.maxHeight}px`
-      : props.maxHeight};
-  margin-bottom: 2rem;
-  overflow: auto;
-  font-size: 0.95em;
+const EditorWrapper = styled('div', {
+  position: 'relative',
+  flex: 1,
+  padding: '1em',
+  backgroundColor: '$syntaxBg',
+  borderRadius: '0.75rem',
+  marginBottom: '2rem',
+  overflow: 'auto',
+  fontSize: '0.95em',
 
-  &::after {
-    content: attr(data-language);
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0.5rem 0.75rem;
-    color: var(--colors-syntaxFg);
-    font-size: 0.75rem;
-    font-weight: bold;
-  }
+  '&::after': {
+    content: 'attr(data-language)',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    padding: '0.5rem 0.75rem',
+    color: '$syntaxFg',
+    fontSize: '0.75rem',
+    fontWeight: 'bold',
+  },
 
-  textarea {
-    z-index: -1;
-  }
+  textarea: {
+    zIndex: -1,
+  },
 
-  & pre {
-    overflow-x: auto;
-  }
+  '& pre': {
+    overflowX: 'auto',
+  },
 
-  @media ${BREAKPOINTS.sm} {
-    margin-bottom: 1.5rem;
-  }
-`;
+  [`@media ${BREAKPOINTS.sm}`]: {
+    marginBottom: '1.5rem',
+  },
+});
 
 export default Code;

@@ -1,5 +1,5 @@
 import React, { SVGAttributes } from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 
 import Link from '@components/Link';
 
@@ -158,12 +158,12 @@ export default ({ size = '40px' }: LogoProps) => (
   </WrapperLink>
 );
 
-const WrapperLink = styled(Link)`
-  display: flex;
-  text-decoration: none;
-  transition: transform 0.2s cubic-bezier(0.4, 0, 1, 1);
+const WrapperLink = styled(Link, {
+  display: 'flex',
+  textDecoration: 'none',
+  transition: 'transform 0.2s cubic-bezier(0.4, 0, 1, 1)',
 
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
+  '&:hover': {
+    transform: 'scale(1.1)',
+  },
+});

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@style';
 
 import TextLink from '@components/TextLink';
 
@@ -21,23 +21,23 @@ const Navigation = () => (
   </Wrapper>
 );
 
-const Wrapper = styled.nav`
-  display: flex;
-  flex: 1 1 auto;
-  padding: 0 1rem;
-`;
+const Wrapper = styled('nav', {
+  display: 'flex',
+  flex: '1 1 auto',
+  padding: '0 1rem',
+});
 
-const NavigationList = styled.ul`
-  display: flex;
-  list-style: none;
-`;
+const NavigationList = styled('ul', {
+  display: 'flex',
+  listStyle: 'none',
+});
 
-const NavigationItem = styled.li`
-  margin: 10px;
-`;
+const NavigationItem = styled('li', {
+  margin: '10px',
+});
 
-const NavigationLink = styled(TextLink)`
-  color: var(--colors-text);
-`;
+const NavigationLink = styled(TextLink, {
+  color: '$text',
+});
 
 export default Navigation;

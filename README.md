@@ -7,7 +7,7 @@ This is the source for my personal blog [samrose.me](https://samrose.me).
 - [React](https://github.com/facebook/react)
 - [Gatsby](https://github.com/gatsbyjs/gatsby)
 - [TypeScript](https://github.com/microsoft/typescript)
-- [styled-components](https://github.com/styled-components)
+- [Stitches](https://github.com/modulz/stitches)
 - [mdx](https://github.com/mdx-js/mdx)
 - [Prettier](https://github.com/prettier/prettier)
 - [Splitbee](https://splitbee.io)

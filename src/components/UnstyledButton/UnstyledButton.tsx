@@ -1,15 +1,16 @@
-import styled from 'styled-components';
+import { styled } from '@style';
 
-export default styled.button`
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  text-align: left;
-  &:focus {
-    outline: 2px solid var(--colors-primary);
-    outline-offset: 2px;
-  }
-`;
+export default styled('button', {
+  display: 'block',
+  margin: '0',
+  padding: '0',
+  border: 'none',
+  background: 'transparent',
+  cursor: 'pointer',
+  textAlign: 'left',
+  '&:focus': {
+    outline: '2px solid',
+    outlineColor: '$primary',
+    outlineOffset: '2px',
+  },
+});
