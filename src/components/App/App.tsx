@@ -1,11 +1,11 @@
 import React from 'react';
-import { global } from '@style';
+import { globalCss } from '@style';
 
 import { ThemeProvider } from '@components/ThemeContext';
 
 import './reset.css';
 
-const globalStyles = global({
+const globalStyles = globalCss({
   'html, body': {
     background: '$background',
     color: '$text',

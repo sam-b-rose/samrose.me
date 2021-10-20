@@ -16,7 +16,7 @@ const BlogCard = styled(Card, {
     left: '0',
     width: '4px',
     height: '100%',
-    backgroundColor: '$background',
+    backgroundColor: '$primary',
   },
 });
 

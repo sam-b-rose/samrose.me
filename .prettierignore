@@ -1,0 +1,10 @@
+.idea/
+.vscode/
+node_modules
+dist
+out
+CHANGELOG.md
+README.md
+.cache
+.netlify
+public

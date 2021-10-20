@@ -1,7 +1,5 @@
 import { styled } from '@style';
 
-import { BREAKPOINTS } from '@constants';
-
 const Quote = styled('blockquote', {
   position: 'relative',
   fontSize: '1.2em',
@@ -13,11 +11,7 @@ const Quote = styled('blockquote', {
   marginLeft: 'auto',
   maxWidth: '35em',
 
-  [`@media ${BREAKPOINTS.md}`]: {
-    padding: '1rem 2rem',
-  },
-
-  [`@media ${BREAKPOINTS.sm}`]: {
+  '@bp2': {
     padding: '1rem',
   },
 

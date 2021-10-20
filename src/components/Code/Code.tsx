@@ -3,7 +3,6 @@ import { LiveProvider, LiveEditor } from 'react-live';
 import { Language } from 'prism-react-renderer';
 import { styled } from '@style';
 
-import { BREAKPOINTS } from '@constants';
 import { syntaxTheme } from '@helpers/syntax-highlighting.helpers';
 
 type CodeProps = {
@@ -68,7 +67,7 @@ const EditorWrapper = styled('div', {
     overflowX: 'auto',
   },
 
-  [`@media ${BREAKPOINTS.sm}`]: {
+  '@bp2': {
     marginBottom: '1.5rem',
   },
 });

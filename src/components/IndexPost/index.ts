@@ -1,1 +1,1 @@
-export { default } from "./IndexPost";
+export { default } from './IndexPost';

@@ -1,1 +1,1 @@
-export { default } from "./InlineCode";
+export { default } from './InlineCode';

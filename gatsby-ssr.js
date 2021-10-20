@@ -2,7 +2,7 @@ import React from 'react';
 import Terser from 'terser';
 
 import { COLOR_MODE_KEY } from '@constants';
-import { darkTheme, getCssString } from '@style';
+import { darkTheme, getCssText } from '@style';
 
 function setColorsByTheme() {
   const colorModeKey = '🔑';
@@ -44,7 +44,7 @@ const FallbackStyles = () => {
     <style
       id="stitches"
       dangerouslySetInnerHTML={{
-        __html: getCssString(),
+        __html: getCssText(),
       }}
     />
   );

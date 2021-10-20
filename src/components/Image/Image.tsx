@@ -1,8 +1,6 @@
 import React from 'react';
 import { styled } from '@style';
 
-import { BREAKPOINTS } from '@constants';
-
 type ImageProps = React.HTMLAttributes<HTMLImageElement> & {
   src: string;
   alt?: string;
@@ -36,7 +34,7 @@ const Wrapper = styled('span', {
   margin: '40px auto 80px',
   padding: '10px',
 
-  [`@media ${BREAKPOINTS.sm}`]: {
+  '@bp2': {
     padding: '0',
     border: 'none',
   },

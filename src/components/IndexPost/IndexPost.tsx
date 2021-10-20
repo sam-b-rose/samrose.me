@@ -4,7 +4,6 @@
 import React from 'react';
 import { styled, darkTheme } from '@style';
 
-import { BREAKPOINTS } from '@constants';
 import { humanizeDate } from '@helpers/date.helpers';
 
 import Paragraph from '@components/Paragraph';
@@ -53,7 +52,7 @@ const PostTitle = styled('h2', {
   fontWeight: '600',
   letterSpacing: '-1px',
 
-  [`@media ${BREAKPOINTS.sm}`]: {
+  '@bp2': {
     fontSize: '1.75rem',
   },
 });

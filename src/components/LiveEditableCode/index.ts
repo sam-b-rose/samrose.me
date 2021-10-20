@@ -1,1 +1,1 @@
-export { default } from './LiveEditableCode'
+export { default } from './LiveEditableCode';

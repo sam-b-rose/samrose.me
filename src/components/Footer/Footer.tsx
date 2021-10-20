@@ -7,7 +7,6 @@ import { socialLinkedin } from 'react-icons-kit/ionicons/socialLinkedin';
 
 import ClickableIcon from '@components/ClickableIcon';
 import MaxWidthWrapper from '@components/MaxWidthWrapper';
-import { BREAKPOINTS } from '@constants';
 
 const WIDTH = 24;
 
@@ -70,7 +69,7 @@ const FooterContent = styled(MaxWidthWrapper, {
   borderTop: '1px solid',
   borderTopColor: '$gray100',
 
-  [`@media ${BREAKPOINTS.sm}`]: {
+  '@bp2': {
     flexDirection: 'column',
   },
 });
@@ -95,7 +94,7 @@ const Icons = styled('div', {
     marginLeft: '0.75rem',
   },
 
-  [`@media ${BREAKPOINTS.desktop}`]: {
+  '@bp4': {
     marginTop: 0,
 
     '& > *': {

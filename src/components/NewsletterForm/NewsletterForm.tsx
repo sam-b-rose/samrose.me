@@ -3,8 +3,6 @@ import { styled } from '@style';
 import IconBase from 'react-icons-kit';
 import { send } from 'react-icons-kit/feather/send';
 
-import { BREAKPOINTS } from '@constants';
-
 import Button from '@components/Button';
 import TextInput from '@components/TextInput';
 
@@ -49,11 +47,12 @@ const Wrapper = styled('div', {
 const InlineForm = styled('div', {
   display: 'grid',
   gridGap: '0.75rem',
-  gridTemplateColumns: 'auto',
+  gridTemplateColumns: 'repeat(2, auto)',
+  justifyContent: 'start',
 
-  [`@media ${BREAKPOINTS.smMin}`]: {
-    gridTemplateColumns: 'repeat(2, auto)',
-    justifyContent: 'start',
+  '@bp2': {
+    gridTemplateColumns: 'auto',
+    justifyContent: 'stretch',
   },
 });
 

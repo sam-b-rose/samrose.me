@@ -1,6 +1,6 @@
 import { styled } from '@style';
 
-import { BREAKPOINTS, READING_WIDTH } from '@constants';
+import { READING_WIDTH } from '@constants';
 
 const MaxWidthWrapper = styled('div', {
   position: 'relative',
@@ -11,7 +11,7 @@ const MaxWidthWrapper = styled('div', {
   marginRight: 'auto',
   paddingLeft: '2rem',
   paddingRight: '2rem',
-  [`@media ${BREAKPOINTS.sm}`]: {
+  '@bp2': {
     paddingLeft: '1rem',
     paddingRight: '1rem',
   },

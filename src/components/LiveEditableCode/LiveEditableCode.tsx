@@ -2,7 +2,6 @@ import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { styled } from '@style';
 
-import { BREAKPOINTS } from '@constants';
 import { interactWithCodeSample } from '@helpers/analytics.helpers';
 import { syntaxTheme } from '@helpers/syntax-highlighting.helpers';
 
@@ -95,11 +94,11 @@ const Wrapper = styled(MaxWidthWrapper, {
       '0 0 0 2px var(--colors-gray300), 0 3px 8px 0 var(--colors-shadow)',
   },
 
-  [`@media ${BREAKPOINTS.md}`]: {
+  '@bp3': {
     flexDirection: 'column',
   },
 
-  [`@media ${BREAKPOINTS.sm}`]: {
+  '@bp2': {
     paddingLeft: '0',
     paddingRight: '0',
   },
@@ -111,7 +110,7 @@ const EditorWrapper = styled('div', {
   backgroundColor: '$syntaxBg',
   overflow: 'auto',
 
-  [`@media ${BREAKPOINTS.sm}`]: {
+  '@bp2': {
     textarea: {
       pointerEvents: 'none',
     },

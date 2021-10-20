@@ -3,8 +3,6 @@ import { styled } from '@style';
 import IconBase from 'react-icons-kit';
 import { link as linkIcon } from 'react-icons-kit/ionicons/link';
 
-import { BREAKPOINTS } from '@constants';
-
 const slugify = (str = '') =>
   str
     .toLowerCase()
@@ -93,20 +91,20 @@ const H6 = styled(Base, {
 });
 
 const Anchor = styled('a', {
-  display: 'none',
+  display: 'block',
+  position: 'absolute',
+  bottom: '0',
+  left: '0',
+  transform: 'translateX(-125%)',
+  transition: 'opacity 250ms',
+  opacity: '0',
 
-  [`@media ${BREAKPOINTS.mdMin}`]: {
-    display: 'block',
-    position: 'absolute',
-    bottom: '0',
-    left: '0',
-    transform: 'translateX(-125%)',
-    transition: 'opacity 250ms',
-    opacity: '0',
+  [`${Base}:hover &, &:focus`]: {
+    opacity: 0.75,
+  },
 
-    [`${Base}:hover &, &:focus`]: {
-      opacity: 0.75,
-    },
+  '@bp2': {
+    display: 'none',
   },
 });
 

@@ -14,7 +14,6 @@ import MainContent from '@components/MainContent';
 import MaxWidthWrapper from '@components/MaxWidthWrapper';
 import SectionTitle from '@components/SectionTitle';
 import Spacer from '@components/Spacer';
-import { BREAKPOINTS } from '@constants';
 
 type RecentPosts = {
   allMdx: {
@@ -83,7 +82,7 @@ const RecentSection = styled('section', {
   marginTop: '10rem',
   marginBottom: '3rem',
 
-  [`@media ${BREAKPOINTS.desktop}`]: {
+  '@bp4': {
     marginTop: '12rem',
   },
 });
