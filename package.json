@@ -42,9 +42,7 @@
     "gatsby-plugin-typescript": "^2.5.0",
     "gatsby-remark-graph": "^0.2.3",
     "gatsby-remark-images": "^3.8.1",
-    "gatsby-remark-mermaid": "^2.1.0",
     "gatsby-source-filesystem": "^2.0.1",
-    "puppeteer": "^5.5.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
@@ -67,5 +65,8 @@
     "prettier": "2.1.2",
     "typescript": "^3.9.7",
     "webpack": "^4.0.0"
+  },
+  "volta": {
+    "node": "14.18.2"
   }
 }

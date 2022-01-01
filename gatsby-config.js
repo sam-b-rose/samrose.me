@@ -43,20 +43,6 @@ module.exports = {
         },
         gatsbyRemarkPlugins: [
           {
-            resolve: 'gatsby-remark-mermaid',
-            options: {
-              theme: 'base',
-              mermaidOptions: {
-                themeVariables: {
-                  background: '#0E0E1A',
-                  primaryColor: '#151628',
-                  primaryBorderColor: 'hsl(210deg, 25%, 88%)',
-                  primaryTextColor: '#C6797E',
-                },
-              },
-            },
-          },
-          {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 590,
