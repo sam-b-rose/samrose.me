@@ -29,19 +29,19 @@ Dustin and his team have found that using brotli compression for their design sy
 
 ## Adding Brotli
 
-Adding brotli compression to our Storybook configuration is made easier thanks to the to the [brotli-webpack-plugin](https://www.npmjs.com/package/brotli-webpack-plugin). Install the plugin package as a dev dependency.
+Adding brotli compression to our Storybook configuration is made more convenient thanks to the to the [brotli-webpack-plugin](https://www.npmjs.com/package/brotli-webpack-plugin). First, install the plugin package as a dev dependency.
 
-```bash
+```
 npm install --save-dev brotli-webpack-plugin
 ```
 
-Then, add the plugin to your `main.js` webpack config for Storybook.
+Then, add the plugin to the `main.js` webpack config for Storybook.
 
 ```js
 const BrotliPlugin = require('brotli-webpack-plugin');
 
 module.exports = {
-  // Optionally add this feature to enable code-splitting per story (^6.4)
+  // Optionally add to enable code-splitting per story (^6.4)
   features: {
     storyStoreV7: true,
   },
@@ -62,4 +62,20 @@ module.exports = {
 };
 ```
 
-When running the build script for Storybook, the output will include `*.(js|css|html|svg)` files as usual. With the plugin installed, it should now also generate `*.br.(js|css|html|svg)` assets which will be preferred and served by brotli compatible static servers. One way we can test the Storybook output is by using the `[http-server](https://github.com/http-party/http-server)` with the `-b` or `--brotli` flag enabled. The network tab in your browser’s inspector (dev tools) can be used to verify that the brotli encoded version is being properly delivered.
+Build a production-ready version of the Storybook which is setup by Storybook as the following script:
+
+```
+npm run build-storybook
+```
+
+The output will include `*.(js|css|html|svg)` files as usual. With the plugin installed, it should now also generate `*.br.(js|css|html|svg)` assets which will be preferred and served by brotli compatible static servers.
+
+One way we can test the Storybook output is by using [`http-server`](https://github.com/http-party/http-server) static HTTP server with the `-b` or `--brotli` flag enabled. Preview it locally by running the following command:
+
+```
+npx http-server -b ./path/to/build
+```
+
+The Chrome DevTools [Network tab](https://developer.chrome.com/docs/devtools/network/) can be used to verify that the brotli encoded version is being properly delivered.
+
+![Network tab to inspect brotli content encoding.](./images/network-tab-content-encoding.png)
