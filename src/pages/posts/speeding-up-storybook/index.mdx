@@ -68,7 +68,7 @@ Build a production-ready version of the Storybook which is setup by Storybook as
 npm run build-storybook
 ```
 
-The output will include `*.(js|css|html|svg)` files as usual. With the plugin installed, it should now also generate `*.br.(js|css|html|svg)` assets which will be preferred and served by brotli compatible static servers.
+The output will include `*.(js|css|html|svg)` files as usual. With the plugin installed, it should now also generate `*.(js|css|html|svg).br` assets which will be preferred and served by brotli compatible static servers.
 
 One way we can test the Storybook output is by using [`http-server`](https://github.com/http-party/http-server) static HTTP server with the `-b` or `--brotli` flag enabled. Preview it locally by running the following command:
 
