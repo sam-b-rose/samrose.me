@@ -22,9 +22,9 @@ Dustin and his team have found that using brotli compression for their design sy
   A quick note on compatibility. Not all static servers support delivering
   brotli compressed files. At the time of writing this, GitHub Pages
   automatically compresses and serves assets using gzip. There are other static
-  page hosting services, such as GitLab Pages, that will prefer and use brotli
-  compressed versions. Check your static service provider's compression
-  compatibility or to enable serving brotli if you are using your own server.
+  page hosting services that will prefer and use brotli compressed versions.
+  Check your static service provider's compression compatibility or to enable
+  serving brotli if you are using your own server.
 </BlogCard>
 
 ## Adding Brotli
@@ -41,10 +41,6 @@ Then, add the plugin to the `main.js` webpack config for Storybook.
 const BrotliPlugin = require('brotli-webpack-plugin');
 
 module.exports = {
-  // Optionally add to enable code-splitting per story (^6.4)
-  features: {
-    storyStoreV7: true,
-  },
   // Add the brotli plugin to your final webpack configuration
   webpackFinal: async (config, { configType }) => {
     if (configType === 'PRODUCTION') {
