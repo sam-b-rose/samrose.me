@@ -6,7 +6,6 @@ import TextLink from '@components/TextLink';
 const items = [
   { text: 'Posts', to: '/posts' },
   { text: 'About', to: '/about' },
-  { text: 'Portfolio', to: 'https://portfolio.samrose.me' },
 ];
 
 const Navigation = () => (

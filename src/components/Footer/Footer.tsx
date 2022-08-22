@@ -14,7 +14,7 @@ const Footer = () => (
   <Wrapper>
     <FooterContent>
       <Copyright>
-        © 2021 Sam Rose
+        © 2022 Sam Rose
         <br />
         All Rights Reserved.
       </Copyright>
