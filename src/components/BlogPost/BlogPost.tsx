@@ -27,7 +27,7 @@ type BlogPostProps = {
 const BlogPost: React.FC<BlogPostProps> = ({ children, ...props }) => {
   const { slug } = props.pageContext.frontmatter;
   const [links, setLinks] = useState({
-    twitter: 'https://mobile.twitter.com/search?q=_samrose3_',
+    twitter: 'https://x.com/search?q=sam_b_rose',
     github: 'https://github.com/samrose3/samrose.me',
   });
 
@@ -37,7 +37,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ children, ...props }) => {
     );
 
     setLinks({
-      twitter: `https://mobile.twitter.com/search?q=${encodedUrl}`,
+      twitter: `https://x.com/search?q=${encodedUrl}`,
       github: `https://github.com/samrose3/samrose.me/edit/main/src/pages/posts/${slug}/index.mdx`,
     });
   }, [slug]);

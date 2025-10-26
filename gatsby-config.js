@@ -1,7 +1,5 @@
 const path = require('path');
 
-const rssConfig = require('./rss-plugin-config');
-
 module.exports = {
   siteMetadata: {
     title: 'Sam Rose',
@@ -14,7 +12,6 @@ module.exports = {
     },
   },
   plugins: [
-    rssConfig,
     {
       resolve: 'gatsby-plugin-alias-imports',
       options: {

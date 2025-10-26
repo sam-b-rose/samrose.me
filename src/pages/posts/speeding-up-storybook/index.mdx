@@ -16,7 +16,7 @@ Storybook recently introduced an on-demand architecture for 3x smaller builds an
 
 Now that we can bundle and lazy-load stories can be independently, I was curious if we could take one more step in optimizing our static story assets. <span role="" aria-label="thinking and curious">🤔</span>
 
-My friend, [Dustin Younse](https://twitter.com/milsyobtaf), recommended I look into [brotli](https://github.com/google/brotli), a generic-purpose lossless compression algorithm developed by Google, as a possible solution for further file shrinking.
+My friend, [Dustin Younse](https://x.com/milsyobtaf), recommended I look into [brotli](https://github.com/google/brotli), a generic-purpose lossless compression algorithm developed by Google, as a possible solution for further file shrinking.
 
 Dustin and his team found that using brotli compression for their design system Storybook significantly improved load speeds for teams in Tokyo and Singapore (APAC). This may not be an issue if using a low-latency CDN for your teams Storybook. However, brotli compression is an easy integration that might be worth experimenting! <span role="img" aria-label="test tube">🧪</span>
 

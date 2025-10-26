@@ -11,14 +11,14 @@ const Footer = () => (
   <Wrapper>
     <FooterContent>
       <Copyright>
-        © 2022 Sam Rose
+        © 2025 Sam Rose
         <br />
         All Rights Reserved.
       </Copyright>
       <Icons>
         <ClickableIcon
           size={WIDTH}
-          href="https://codepen.io/samrose3"
+          href="https://codepen.io/sam-b-rose"
           icon={IoLogoCodepen}
           iconHover={IoLogoCodepen}
           color={'var(--colors-gray400)'}
@@ -26,7 +26,7 @@ const Footer = () => (
         />
         <ClickableIcon
           size={WIDTH}
-          href="https://www.github.com/samrose3"
+          href="https://www.github.com/sam-b-rose"
           icon={IoLogoGithub}
           iconHover={IoLogoGithub}
           color={'var(--colors-gray400)'}
@@ -34,7 +34,7 @@ const Footer = () => (
         />
         <ClickableIcon
           size={WIDTH}
-          href="https://www.twitter.com/_samrose3_"
+          href="https://x.com/sam_b_rose"
           icon={IoLogoTwitter}
           iconHover={IoLogoTwitter}
           color={'var(--colors-gray400)'}
@@ -42,7 +42,7 @@ const Footer = () => (
         />
         <ClickableIcon
           size={WIDTH}
-          href="https://www.linkedin.com/in/samrose3"
+          href="https://www.linkedin.com/in/sam-b-rose"
           icon={IoLogoLinkedin}
           iconHover={IoLogoLinkedin}
           color={'var(--colors-gray400)'}
