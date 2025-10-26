@@ -1,9 +1,6 @@
 import React from 'react';
 import { styled } from '@style';
-import { socialTwitter } from 'react-icons-kit/ionicons/socialTwitter';
-import { socialCodepen } from 'react-icons-kit/ionicons/socialCodepen';
-import { socialGithub } from 'react-icons-kit/ionicons/socialGithub';
-import { socialLinkedin } from 'react-icons-kit/ionicons/socialLinkedin';
+import { IoLogoTwitter, IoLogoCodepen, IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5';
 
 import ClickableIcon from '@components/ClickableIcon';
 import MaxWidthWrapper from '@components/MaxWidthWrapper';
@@ -22,32 +19,32 @@ const Footer = () => (
         <ClickableIcon
           size={WIDTH}
           href="https://codepen.io/samrose3"
-          icon={socialCodepen}
-          iconHover={socialCodepen}
+          icon={IoLogoCodepen}
+          iconHover={IoLogoCodepen}
           color={'var(--colors-gray400)'}
           colorHover={'var(--colors-gray900)'}
         />
         <ClickableIcon
           size={WIDTH}
           href="https://www.github.com/samrose3"
-          icon={socialGithub}
-          iconHover={socialGithub}
+          icon={IoLogoGithub}
+          iconHover={IoLogoGithub}
           color={'var(--colors-gray400)'}
           colorHover={'var(--colors-gray900)'}
         />
         <ClickableIcon
           size={WIDTH}
           href="https://www.twitter.com/_samrose3_"
-          icon={socialTwitter}
-          iconHover={socialTwitter}
+          icon={IoLogoTwitter}
+          iconHover={IoLogoTwitter}
           color={'var(--colors-gray400)'}
           colorHover={'var(--colors-gray900)'}
         />
         <ClickableIcon
           size={WIDTH}
           href="https://www.linkedin.com/in/samrose3"
-          icon={socialLinkedin}
-          iconHover={socialLinkedin}
+          icon={IoLogoLinkedin}
+          iconHover={IoLogoLinkedin}
           color={'var(--colors-gray400)'}
           colorHover={'var(--colors-gray900)'}
         />

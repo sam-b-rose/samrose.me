@@ -1,7 +1,6 @@
 import React, { HTMLAttributes } from 'react';
-import GatsbyLink from 'gatsby-link';
+import { Link as GatsbyLink } from 'gatsby';
 import { styled, darkTheme } from '@style';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 type LinkProps = HTMLAttributes<HTMLAnchorElement> & {
   href: string;
@@ -38,7 +37,7 @@ const Link: React.FC<LinkProps> = ({ href, target, rel, ...delegated }) => {
   );
 };
 
-const StyledLink = styled(OutboundLink, {
+const StyledLink = styled('a', {
   color: '$primary',
 });
 

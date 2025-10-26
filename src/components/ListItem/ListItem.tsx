@@ -1,14 +1,9 @@
 import React from 'react';
 import { styled } from '@style';
-import IconBase from 'react-icons-kit';
-import { arrowRightC } from 'react-icons-kit/ionicons/arrowRightC';
+import { IoArrowForward } from 'react-icons/io5';
 
 const DefaultIcon = () => (
-  <IconBase
-    size={16}
-    icon={arrowRightC}
-    style={{ color: 'var(--colors-primary)' }}
-  />
+  <IoArrowForward size={16} color="var(--colors-primary)" />
 );
 
 const ICONS = {

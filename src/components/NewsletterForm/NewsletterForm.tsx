@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled } from '@style';
-import IconBase from 'react-icons-kit';
-import { send } from 'react-icons-kit/feather/send';
+import { FiSend } from 'react-icons/fi';
 
 import Button from '@components/Button';
 import TextInput from '@components/TextInput';
@@ -10,11 +9,7 @@ const NewsletterForm = () => (
   <Wrapper>
     <h3>
       Subscribe to the newsletter{' '}
-      <IconBase
-        icon={send}
-        size={18}
-        style={{ color: 'var(--colors-gray600)' }}
-      />
+      <FiSend size={18} color="var(--colors-gray600)" />
     </h3>
     <p>
       Be the first to know when I post something new! Thoughts about code,

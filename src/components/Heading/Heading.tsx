@@ -1,7 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import { styled } from '@style';
-import IconBase from 'react-icons-kit';
-import { link as linkIcon } from 'react-icons-kit/ionicons/link';
+import { IoLink } from 'react-icons/io5';
 
 const slugify = (str = '') =>
   str
@@ -44,7 +43,7 @@ const Heading: React.FC<HeadingProps> = ({
   return (
     <Element {...delegated} as={as}>
       <Anchor id={id} href={`#${id}`}>
-        <IconBase size="0.75em" icon={linkIcon} />
+        <IoLink size="0.75em" />
       </Anchor>
 
       {children}

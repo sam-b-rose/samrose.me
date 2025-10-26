@@ -3,7 +3,6 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import { styled } from '@style';
 
-import { siteMetadata } from '../../../gatsby-config';
 
 import Card from '@components/Card';
 import FullWidth from '@components/FullWidth';
@@ -14,6 +13,11 @@ import MaxWidthWrapper from '@components/MaxWidthWrapper';
 import { capitalize } from '@utils';
 
 type AllPosts = {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
   allMdx: {
     edges: PostNode[];
   };
@@ -22,9 +26,9 @@ type AllPosts = {
 type PostNode = {
   node: {
     id: string;
-    slug: string;
     excerpt: string;
     frontmatter: {
+      slug: string;
       title: string;
       abstract: string;
       category: string;
@@ -50,7 +54,7 @@ const PostsPage = ({ data }: { data: AllPosts }) => {
   return (
     <Layout>
       <FullWidth>
-        <Helmet title={siteMetadata.title} />
+        <Helmet title={data.site.siteMetadata.title} />
         <MainContent>
           <MaxWidthWrapper>
             {Object.keys(posts).map((category) => (
@@ -110,7 +114,7 @@ const getPosts = (data: AllPosts): PostsByCategory => {
       }
       return {
         id: node.id,
-        path: `/posts/${node.slug}`,
+        path: `/posts/${node.frontmatter.slug}`,
         title: node.frontmatter.title,
         category: node.frontmatter.category,
         excerpt: node.excerpt,
@@ -134,13 +138,18 @@ const getPosts = (data: AllPosts): PostsByCategory => {
 
 export const query = graphql`
   query AllPosts {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allMdx {
       edges {
         node {
           id
-          slug
           excerpt
           frontmatter {
+            slug
             title
             isPublished
             publishedOn

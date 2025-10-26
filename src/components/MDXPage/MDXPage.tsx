@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-
-import { siteMetadata } from '../../../gatsby-config';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import Layout from '@components/Layout';
 import FullWidth from '@components/FullWidth';
@@ -25,6 +24,16 @@ const MDXPage: React.FC<MDXPageProps> = ({
   pageContext,
   location,
 }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+
   const { title } = pageContext.frontmatter;
   const pageTitle = title ? `${title} - ` : '';
 
@@ -48,7 +57,7 @@ const MDXPage: React.FC<MDXPageProps> = ({
     <MDXProvider>
       <Layout>
         <FullWidth>
-          <Helmet title={`${pageTitle}${siteMetadata.title}`} />
+          <Helmet title={`${pageTitle}${data.site.siteMetadata.title}`} />
           <MainContent>
             <MaxWidthWrapper as="article">{children}</MaxWidthWrapper>
           </MainContent>

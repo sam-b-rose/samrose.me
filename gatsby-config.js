@@ -37,10 +37,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        defaultLayouts: {
-          posts: require.resolve('./src/components/BlogPost/BlogPost.tsx'),
-          default: require.resolve('./src/components/MDXPage/MDXPage.tsx'),
-        },
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
@@ -57,8 +53,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'posts',
-        path: `${__dirname}/src/pages/posts`,
+        name: 'pages',
+        path: `${__dirname}/src/pages`,
       },
     },
     {
@@ -82,22 +78,9 @@ module.exports = {
         web: [
           {
             name: ['IBM Plex Sans', 'Inter', 'Fugaz One'],
-            file:
-              'https://fonts.googleapis.com/css2?family=Fugaz+One&family=IBM+Plex+Sans:wght@600&family=Inter:wght@400;500&display=swap',
+            file: 'https://fonts.googleapis.com/css2?family=Fugaz+One&family=IBM+Plex+Sans:wght@600&family=Inter:wght@400;500&display=swap',
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-19428169-1`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-splitbee`,
-      options: {
-        includeInDevelopment: false,
       },
     },
   ],

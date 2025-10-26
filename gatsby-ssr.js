@@ -1,5 +1,4 @@
 import React from 'react';
-import Terser from 'terser';
 
 import { COLOR_MODE_KEY } from '@constants';
 import { darkTheme, getCssText } from '@style';
@@ -33,8 +32,7 @@ const MagicScriptTag = () => {
     .replace('🔑', COLOR_MODE_KEY)
     .replace('🌙', darkTheme.className);
 
-  let calledFunction = `(${boundFn})()`;
-  calledFunction = Terser.minify(calledFunction).code;
+  const calledFunction = `(${boundFn})()`;
 
   return <script dangerouslySetInnerHTML={{ __html: calledFunction }} />;
 };

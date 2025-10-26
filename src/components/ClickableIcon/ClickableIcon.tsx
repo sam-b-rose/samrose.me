@@ -1,13 +1,13 @@
 import React from 'react';
 import { styled } from '@style';
-import IconBase from 'react-icons-kit';
+import { IconType } from 'react-icons';
 
 import Link from '@components/Link';
 import InvisibleButton from '@components/InvisibleButton';
 
 type ClickableIconProps = {
-  icon: string;
-  iconHover: string;
+  icon: IconType;
+  iconHover: IconType;
   color: string;
   colorHover: string;
   size: number;
@@ -16,8 +16,8 @@ type ClickableIconProps = {
 
 export const ClickableIcon: React.FC<ClickableIconProps> = ({
   href,
-  icon,
-  iconHover,
+  icon: Icon,
+  iconHover: IconHover,
   color,
   colorHover,
   size,
@@ -29,16 +29,12 @@ export const ClickableIcon: React.FC<ClickableIconProps> = ({
     // @ts-ignore
     <Wrapper href={href} {...delegated}>
       <IconWrapper>
-        <IconBase icon={icon} style={{ color }} size={size} />
+        <Icon color={color} size={size} />
       </IconWrapper>
 
-      {iconHover && (
+      {IconHover && (
         <IconHoverWrapper>
-          <IconBase
-            icon={iconHover}
-            style={{ color: colorHover }}
-            size={size}
-          />
+          <IconHover color={colorHover} size={size} />
         </IconHoverWrapper>
       )}
     </Wrapper>

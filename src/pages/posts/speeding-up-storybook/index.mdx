@@ -10,6 +10,8 @@ interactive: false
 
 import BlogCard from '@components/BlogCard';
 
+export {default} from '@components/BlogPost';
+
 Storybook recently introduced an on-demand architecture for 3x smaller builds and faster load times in the [6.4 release](https://storybook.js.org/blog/storybook-6-4/). I won't dive into the [data or details](https://storybook.js.org/blog/storybook-on-demand-architecture/). At a high-level, Storybook achieves this performance improvement by loading each story independently rather than packing them into a single monolithic bundle.
 
 Now that we can bundle and lazy-load stories can be independently, I was curious if we could take one more step in optimizing our static story assets. <span role="" aria-label="thinking and curious">🤔</span>

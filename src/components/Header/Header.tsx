@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@style';
-import { socialRss } from 'react-icons-kit/ionicons/socialRss';
+import { IoLogoRss } from 'react-icons/io5';
 
 import ClickableIcon from '@components/ClickableIcon';
 import DarkToggle from '@components/DarkToggle';
@@ -21,8 +21,8 @@ const Header = () => {
           <ClickableIcon
             size={18}
             href="/rss.xml"
-            icon={socialRss}
-            iconHover={socialRss}
+            icon={IoLogoRss}
+            iconHover={IoLogoRss}
             color={'var(--colors-text)'}
             colorHover={'var(--colors-text)'}
           />

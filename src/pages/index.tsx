@@ -3,8 +3,6 @@ import { styled } from '@style';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 
-import { siteMetadata } from '../../gatsby-config';
-
 import FullWidth from '@components/FullWidth';
 import IndexPost from '@components/IndexPost';
 import Banner from '@components/Banner';
@@ -16,6 +14,11 @@ import SectionTitle from '@components/SectionTitle';
 import Spacer from '@components/Spacer';
 
 type RecentPosts = {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
   allMdx: {
     edges: PostNode[];
   };
@@ -24,9 +27,9 @@ type RecentPosts = {
 type PostNode = {
   node: {
     id: string;
-    slug: string;
     excerpt: string;
     frontmatter: {
+      slug: string;
       title: string;
       abstract: string;
       isPublished: boolean;
@@ -49,7 +52,7 @@ const IndexPage = ({ data }: { data: RecentPosts }) => {
 
   return (
     <Layout>
-      <Helmet title={siteMetadata.title} />
+      <Helmet title={data.site.siteMetadata.title} />
       <Hero />
       <FullWidth>
         <MaxWidthWrapper>
@@ -103,7 +106,7 @@ const getPosts = (data: RecentPosts): Post[] =>
 
       return {
         id: node.id,
-        path: `/posts/${node.slug}`,
+        path: `/posts/${node.frontmatter.slug}`,
         title: node.frontmatter.title,
         excerpt: node.excerpt,
         abstract: node.frontmatter.abstract,
@@ -115,13 +118,18 @@ const getPosts = (data: RecentPosts): Post[] =>
 
 export const query = graphql`
   query RecentPosts {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allMdx {
       edges {
         node {
           id
-          slug
           excerpt
           frontmatter {
+            slug
             title
             isPublished
             publishedOn
