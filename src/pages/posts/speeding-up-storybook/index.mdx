@@ -12,21 +12,17 @@ import BlogCard from '@components/BlogCard';
 
 export {default} from '@components/BlogPost';
 
-Storybook recently introduced an on-demand architecture for 3x smaller builds and faster load times in the [6.4 release](https://storybook.js.org/blog/storybook-6-4/). I won't dive into the [data or details](https://storybook.js.org/blog/storybook-on-demand-architecture/). At a high-level, Storybook achieves this performance improvement by loading each story independently rather than packing them into a single monolithic bundle.
+<BlogCard>
+  Storybook is now on <strong>version 10</strong>, which makes this post a bit outdated. However, the principles still apply. You can still use brotli compression to improve Storybook load times.
+</BlogCard>
+
+Since Storybook version 6.4, Storybook introduced an on-demand architecture for smaller builds and faster load times. At a high-level, Storybook achieves this performance improvement by loading each story independently rather than packing them into a single monolithic bundle.
 
 Now that we can bundle and lazy-load stories can be independently, I was curious if we could take one more step in optimizing our static story assets. <span role="" aria-label="thinking and curious">🤔</span>
 
-My friend, [Dustin Younse](https://x.com/milsyobtaf), recommended I look into [brotli](https://github.com/google/brotli), a generic-purpose lossless compression algorithm developed by Google, as a possible solution for further file shrinking.
+My friend, [Dustin Younse](https://www.linkedin.com/in/dustinyounse/), recommended I look into [brotli](https://github.com/google/brotli), a generic-purpose lossless compression algorithm developed by Google, as a possible solution for further file shrinking.
 
 Dustin and his team found that using brotli compression for their design system Storybook significantly improved load speeds for teams in Tokyo and Singapore (APAC). This may not be an issue if using a low-latency CDN for your teams Storybook. However, brotli compression is an easy integration that might be worth experimenting! <span role="img" aria-label="test tube">🧪</span>
-
-<BlogCard>
-  A quick note on compatibility. Not all static servers support delivering
-  brotli compressed files. At the time of writing this, GitHub Pages
-  automatically compresses and serves assets using gzip. Check your static
-  service provider's compression compatibility or enable serving brotli if you
-  are using your own server.
-</BlogCard>
 
 ## Adding Brotli
 
