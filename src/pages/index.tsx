@@ -12,6 +12,7 @@ import MainContent from '@components/MainContent';
 import MaxWidthWrapper from '@components/MaxWidthWrapper';
 import SectionTitle from '@components/SectionTitle';
 import Spacer from '@components/Spacer';
+import Text from '@components/Text';
 
 type RecentPosts = {
   site: {
@@ -57,11 +58,29 @@ const IndexPage = ({ data }: { data: RecentPosts }) => {
       <FullWidth>
         <MaxWidthWrapper>
           <Banner>
-            <h1>Hi, I’m Sam</h1>
-            <p>
-              a design-minded software engineer currently interested in React,
-              TypeScript, design systems, and state machines.
-            </p>
+            <h1>Hi, I'm Sam</h1>
+            <ul>
+              <li>
+                <Text href="https://www.shopify.com" target="_blank">
+                  Sr. Software Engineer @ Shopify
+                </Text>
+              </li>
+              <li>
+                <Text href="https://polaris.shopify.com/" target="_blank">
+                  Building Polaris Design System
+                </Text>
+              </li>
+              <li>
+                <Text href="https://whimsy.joshwcomeau.com/" target="_blank">
+                  Learning Whimsical Animations
+                </Text>
+              </li>
+              <li>
+                <Text href="https://www.makingsoftware.com/" target="_blank">
+                  Reading Making Software
+                </Text>
+              </li>
+            </ul>
           </Banner>
           <MainContent>
             <RecentSection>

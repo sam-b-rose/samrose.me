@@ -1,6 +1,12 @@
 import React from 'react';
 import { styled } from '@style';
-import { IoLogoTwitter, IoLogoCodepen, IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5';
+import {
+  IoLogoTwitter,
+  IoLogoCodepen,
+  IoLogoGithub,
+  IoLogoLinkedin,
+} from 'react-icons/io5';
+import { RiBlueskyFill, RiTwitterXFill } from 'react-icons/ri';
 
 import ClickableIcon from '@components/ClickableIcon';
 import MaxWidthWrapper from '@components/MaxWidthWrapper';
@@ -35,8 +41,16 @@ const Footer = () => (
         <ClickableIcon
           size={WIDTH}
           href="https://x.com/sam_b_rose"
-          icon={IoLogoTwitter}
-          iconHover={IoLogoTwitter}
+          icon={RiTwitterXFill}
+          iconHover={RiTwitterXFill}
+          color={'var(--colors-gray400)'}
+          colorHover={'var(--colors-gray900)'}
+        />
+        <ClickableIcon
+          size={WIDTH}
+          href="https://bsky.app/profile/sam-b-rose.bsky.social"
+          icon={RiBlueskyFill}
+          iconHover={RiBlueskyFill}
           color={'var(--colors-gray400)'}
           colorHover={'var(--colors-gray900)'}
         />

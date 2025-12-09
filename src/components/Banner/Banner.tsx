@@ -28,7 +28,7 @@ const Banner = styled('header', {
 
   '& > p': {
     color: '$gray700',
-    fontSize: '1.75rem',
+    fontSize: '1.5rem',
   },
 
   '@bp2': {

@@ -74,8 +74,8 @@ module.exports = {
         ],
         web: [
           {
-            name: ['IBM Plex Sans', 'Inter', 'Fugaz One'],
-            file: 'https://fonts.googleapis.com/css2?family=Fugaz+One&family=IBM+Plex+Sans:wght@600&family=Inter:wght@400;500&display=swap',
+            name: ['IBM Plex Sans', 'Inter', 'Fugaz One', 'Doto'],
+            file: 'https://fonts.googleapis.com/css2?family=Fugaz+One&family=IBM+Plex+Sans:wght@600&family=Inter:wght@400;500&family=Doto:wght@100..900&display=swap',
           },
         ],
       },

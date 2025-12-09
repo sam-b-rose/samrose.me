@@ -1,5 +1,6 @@
 import { styled } from '@style';
 import Card from '@components/Card';
+import Paragraph from '@components/Paragraph';
 
 const BlogCard = styled(Card, {
   position: 'relative',
@@ -17,6 +18,10 @@ const BlogCard = styled(Card, {
     width: '4px',
     height: '100%',
     backgroundColor: '$primary',
+  },
+
+  [`${Paragraph}:last-of-type`]: {
+    marginBlockEnd: '0',
   },
 });
 
